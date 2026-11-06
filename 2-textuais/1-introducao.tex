@@ -1,0 +1,266 @@
+\chapter{Introdução}
+
+Nesta seção apresentamos conceitos básicos sobre \textit{grafos, digrafos e convexidade} para explorarmos o problema do \emph{Espectro em convexidade} e outros problemas relacionados. Todos os conceitos abordados aqui foram inspirados nos livros \textit{Introduction to graph Theory}~\cite{west2001introduction}, \textit{Digraphs: Theory, Algorithms and Applications}~\cite{bang2001} e \textit{Introduction to Graph Convexity: An Algorithmic Approach}~\cite{julio}.
+
+\section{Grafos e Digrafos}
+
+Podemos definir um grafo simples da seguinte forma: uma dupla $G=(V,E)$, onde $V(G)$ é o conjunto de vértices do grafo $G$ e $E(G)$ é o conjunto de arestas (pares não ordenados de vértices $vu$ ou $uv$) do grafo $G$. Dizemos que os vértices ligados por uma aresta são suas \emph{extremidades}. Como se trata de grafos simples, não temos \emph{laços}, onde as extremidades de uma aresta são o mesmo vértice e também não temos \emph{arestas múltiplas}, ou seja, duas ou mais arestas compartilham as mesmas extremidades.
+
+Seja $vu \in E(G)$, dizemos então que esses vértices são adjacentes. Denotamos como vizinhança aberta de um vértice $v$, o conjunto de todos os vértices adjacentes a $v$. Quando falamos de vizinhança fechada de $v$, o vértice $v$ também está no conjunto. Com o conceito de vizinhança podemos definir o \emph{grau} de um vértice como $d(v) = |N(v)|$.
+
+Um \emph{caminho} em um grafo $G$, é uma sequência de vértices e arestas em que não há repetição de vértices. Um ($u,v$)-caminho é um caminho em que o primeiro vértice da sequência é $u$ e o último é $v$. Um \emph{ciclo} em um grafo $G$ é um caminho em que o primeiro vértice da sequência é igual ao último. Um grafo é dito \emph{conexo} se para todo par de vértice $u,v \in V(G)$ temos um ($u,v$)-caminho. Seja $H = (V_H,E_H)$, $H$ é um subgrafo de $G=(V,E)$ se $V_H \subseteq V$ e $E_H \subseteq E$. Uma \emph{componente} é um subgrafo maximal conexo de $G$. Uma \emph{ponte} é uma aresta $e \in E(G)$ tal que $G-e$ possui mais componentes que $G$.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=.8,
+            vertex/.style={circle, draw, thick, minimum size=0.9cm, font=\normalsize, fill=white},
+            aresta/.style={line width=1.1pt}
+        ]
+
+        \node[vertex] (v1) at (6,   0)    {$v_8$};
+        \node[vertex] (v2) at (4,   1.5)  {$v_6$};
+        \node[vertex] (v3) at (1.5, 1.5)  {$v_4$};
+        \node[vertex] (v4) at (0,   0)    {$v_3$};
+        \node[vertex] (v5) at (1.5, -1.5) {$v_5$};
+        \node[vertex] (v6) at (4,   -1.5) {$v_7$};
+ 
+        \node[vertex] (v7) at (-2.5, 1.5)  {$v_1$};
+        \node[vertex] (v8) at (-2.5, -1.5) {$v_2$};
+ 
+        \draw[aresta] (v1) -- (v2);
+        \draw[aresta] (v2) -- (v3);
+        \draw[aresta] (v3) -- (v4);
+        \draw[aresta] (v4) -- (v5);
+        \draw[aresta] (v5) -- (v6);
+        \draw[aresta] (v6) -- (v1);
+ 
+
+        \draw[aresta] (v3) -- (v5);
+        \draw[aresta] (v2) -- (v6);
+ 
+
+        \draw[aresta] (v4) -- (v7);
+        \draw[aresta] (v4) -- (v8);
+        \draw[aresta] (v7) -- (v8);
+
+    \end{tikzpicture}
+    \caption{Representação de um grafo simples.}\label{fig:peixe}
+\end{figure}
+
+Um \emph{digrafo} (ou grafo direcionado) é uma dupla $D=(V,A)$, onde $V(D)$ é o conjunto de vértices do digrafo $D$ e $A(D)$ é o conjunto de arcos do digrafo $D$. Diferente das arestas em grafos simples, no contexto dos digrafos, um arco é um par ordenado de vértices. Seja $a=(u,v) \in A(D)$, dizemos que o vértice $u$ é a \emph{cauda} do arco $a$ e o vértice $v$ é \emph{cabeça} do arco $a$. Como temos que os arcos são pares ordenados de vértices, podemos dizer que no arco $(u,v)$, o vértice $v$ é \emph{sucessor} do vértice $u$ e que o vértice $u$ é \emph{predecessor} do vértice $v$. O grafo \emph{subjacente} de $D$ é o grafo sem as orientações dos arcos. 
+
+Os conceitos de caminhos e ciclos também existem no contexto direcionado, basicamente ao invés de termos arestas, temos arcos, vale ressaltar que um ($u,v$)-caminho direcionado não significa que temos um ($v,u$)-caminho direcionado. O digrafo $D$ é conexo, se o grafo subjacente de $D$ é conexo. Dizemos que o digrafo é \emph{fortemente} conexo se para todo par de vértices $u,v \in V(D)$ existe um ($u,v$)-caminho direcionado e um ($v,u$)-caminho direcionado.
+
+Se o arco tem as extremidades no mesmo vértice, temos um \emph{laço}, os \emph{arcos múltiplos} são dois ou mais arcos que compartilham a mesma \emph{cabeça} e \emph{cauda}. Se temos laços e arcos múltiplos, se trata de um \emph{pseudodigrafo}, quando temos apenas arcos múltiplos, se trata de um \emph{multidigrafo}. Também podemos dizer que um digrafo sem laços e sem arcos múltiplos é um grafo orientado.
+
+Assim como nos grafos não direcionados, o conceito de vizinhança se mantém, mas nesse caso, se divide em \emph{vizinhança de entrada} e \emph{vizinhança de saída}. Seja $v \in V(D)$, a vizinhança de entrada de $v$, denotado por $N^-(v)$, é o conjunto de todos os predecessores de $v$, já a vizinhança de saída de $v$, denotado por $N^+(v)$, é o conjunto de todos os sucessores de $v$. Com isso, podemos definir \emph{grau de entrada} de $v$ como $d^-(v) = |N^-(v)|$ e \emph{grau de saída} de $v$ como $d^+(v)=|N^+(v)|$.
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[scale=.8,
+            vertex/.style={circle, draw, thick, minimum size=0.9cm, font=\normalsize},
+            arco/.style={-{Latex[length=1.5mm, width=2.4mm]}, line width=1.1pt},
+            branco/.style={fill=white},
+            cinza/.style={fill=gray!40, draw=gray!70!black},
+            azul/.style={fill=blue!20, draw=blue!60!black},
+            vermelho/.style={fill=red!30, draw=red!70!black}
+        ]
+	
+            \node[vertex, branco] (v1) at (0, 2) {$v_1$};
+            \node[vertex, branco] (v2) at (0, 0) {$v_2$};
+            \node[vertex, branco] (v3) at (2.2, 1) {$v_3$};
+            \node[vertex, branco] (v4) at (4.4, 0) {$v_4$};
+            \node[vertex, branco] (v5) at (4.4, 2) {$v_5$};
+            \node[vertex, branco] (v6) at (6.6, 1) {$v_6$};
+ 
+            \draw[arco] (v1) -- (v3);
+            \draw[arco] (v3) -- (v2);
+            \draw[arco] (v4) -- (v2);
+            \draw[arco] (v3) -- (v4);
+            \draw[arco] (v1) -- (v5);
+            \draw[arco] (v5) -- (v3);
+            \draw[arco] (v6) -- (v4);
+            \draw[arco] (v5) -- (v6);
+
+	\end{tikzpicture}
+	\caption{Uma representação de um digrafo $D$.}\label{fig:digrafo}
+\end{figure}
+
+
+Neste texto, quando falarmos grafos, estamos nos referindo à grafos simples, e grafos orientados, à digrafos com grafo subjacente sendo um grafo simples. Dado um grafo $G$, a orientação de $G$ é atribuir para cada aresta $e=uv \in E(G)$ uma única orientação, $(u,v)$ ou $(v,u)$. Se o grafo $G$, é um \emph{grafo completo}, ou seja, para cada par de vértices $u,v \in V(G)$, temos uma aresta, ao orientarmos $G$, obtemos um \emph{torneio}.
+
+
+\section{Convexidade em Grafos orientados}
+
+A teoria da convexidade em grafos é uma área que busca adaptar os conceitos de topologia e geometria contínua em um ambiente discreto, um dos primeiros trabalhos a abordar formalmente o tema foi \textit{Convexity in Graphs}~\cite{harary1981}. Naturalmente, o estudo da convexidade se estende aos grafos orientados. Dentre os vários tipos de convexidade estudados, temos as convexidades baseadas em caminhos, como por exemplo a \emph{convexidade de caminhos de tamanho 2}, introduzido em~\cite{CENTENO200911}, denotado por $P_3$, onde um vértice é gerado por um conjunto $S \subseteq V(G)$ se possui dois vizinhos em $S$, ou a \emph{convexidade geodésica}, onde dado dois vértices $u,v \in S \subseteq V(G)$, todos os vértices que pertencem ao menor $(u,v)$-caminho são gerados, introduzido em\cite{HARARY199389}.
+
+No contexto de grafos orientados, temos por exemplo as versões das convexidades apresentadas anteriormente, como a convexidade $\overrightarrow{P_3}$, onde um vértice é gerado por um conjunto se possui vizinhança de entrada e vizinhança de saída neste conjunto, introduzida em~\cite{ERDOS1972} ou a \emph{convexidade geodésica} orientada, onde dados dois vértices $u,v \in S \subseteq V(D)$, todos os vértices no menor $u,v$-caminho ou $v,u$-caminho são gerados.
+
+Essas operações descritas anteriormente para gerar novos vértices é o que chamamos de \emph{funções de intervalo}, e cada convexidade pode ser definida por uma função de intervalo distinta. Dado um subconjunto inicial de vértices $S$, aplicamos a função de intervalo nesse conjunto para gerar novos vértices. Dizemos que um subconjunto $S \subseteq V(D)$ é \emph{convexo} se, para qualquer $u,v \in S$, $I(u,v) \in S$. O \emph{fecho convexo}, denotado por $conv(S)$, é o menor conjunto convexo que contém $S$. Se $conv(S) = V(D)$, dizemos que $S$ é um conjunto de envoltória.
+
+Com base nessas definições, podemos definir alguns parâmetros que são bastante estudados em diversas convexidades. O \emph{número de envoltória}, denotado por $hn(D)$ é o tamanho do menor conjunto de envoltória em $D$. Denotamos o número de envoltória dicrecionado como $\overrightarrow{hn}(D)$. O \emph{tempo de iteração} de um conjunto $S \subseteq V(D)$, denotado por $ti(S)$, é basicamente a quantidade de vezes que é necessário aplicar uma função de intervalo até obter o fecho convexo $conv(S)$.
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=.6,
+            vertex/.style={circle, draw, thick, minimum size=0.9cm, font=\normalsize},
+            arco/.style={-{Latex[length=2mm, width=2.4mm]}, line width=1.1pt},
+            branco/.style={fill=white},
+            cinza/.style={fill=gray!40, draw=gray!70!black},
+            azul/.style={fill=blue!20, draw=blue!60!black},
+            vermelho/.style={fill=red!30, draw=red!70!black}
+        ]
+            \node[vertex, cinza] (v1) at (0, 2) {$v_1$};
+            \node[vertex, cinza] (v2) at (0, 0) {$v_2$};
+            \node[vertex, branco] (v3) at (2.2, 1) {$v_3$};
+            \node[vertex, branco] (v4) at (4.4, 0) {$v_4$};
+            \node[vertex, branco] (v5) at (4.4, 2) {$v_5$};
+            \node[vertex, branco] (v6) at (6.6, 1) {$v_6$};
+
+            \draw[arco] (v1) -- (v3);
+            \draw[arco] (v3) -- (v2);
+            \draw[arco] (v4) -- (v2);
+            \draw[arco] (v3) -- (v4);
+            \draw[arco] (v1) -- (v5);
+            \draw[arco] (v5) -- (v3);
+            \draw[arco] (v6) -- (v4);
+            \draw[arco] (v5) -- (v6);
+        \end{tikzpicture}
+        \caption{Etapa 0: conjunto inicial $S=\{v_1,v_2\}$.}\label{fig:inf-a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=.6,
+            vertex/.style={circle, draw, thick, minimum size=0.9cm, font=\normalsize},
+            arco/.style={-{Latex[length=2mm, width=2.4mm]}, line width=1.1pt},
+            branco/.style={fill=white},
+            cinza/.style={fill=gray!40, draw=gray!70!black},
+            azul/.style={fill=blue!20, draw=blue!60!black},
+            vermelho/.style={fill=red!30, draw=red!70!black}
+        ]
+            \node[vertex, cinza] (v1) at (0, 2) {$v_1$};
+            \node[vertex, cinza] (v2) at (0, 0) {$v_2$};
+            \node[vertex, vermelho] (v3) at (2.2, 1) {$v_3$};
+            \node[vertex, branco] (v4) at (4.4, 0) {$v_4$};
+            \node[vertex, branco] (v5) at (4.4, 2) {$v_5$};
+            \node[vertex, branco] (v6) at (6.6, 1) {$v_6$};
+            \draw[arco] (v1) -- (v3);
+            \draw[arco] (v3) -- (v2);
+            \draw[arco] (v4) -- (v2);
+            \draw[arco] (v3) -- (v4);
+            \draw[arco] (v1) -- (v5);
+            \draw[arco] (v5) -- (v3);
+            \draw[arco] (v6) -- (v4);
+            \draw[arco] (v5) -- (v6);
+
+
+        \end{tikzpicture}
+        \caption{Etapa 1: $v_3$ é infectado por $v_1$ e $v_2$.}\label{fig:inf-b}
+    \end{subfigure}
+
+    \vspace{1.5em}
+
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=.6,
+            vertex/.style={circle, draw, thick, minimum size=0.9cm, font=\normalsize},
+            arco/.style={-{Latex[length=2mm, width=2.4mm]}, line width=1.1pt},
+            branco/.style={fill=white},
+            cinza/.style={fill=gray!40, draw=gray!70!black},
+            azul/.style={fill=blue!20, draw=blue!60!black},
+            vermelho/.style={fill=red!30, draw=red!70!black}
+        ]
+            \node[vertex, cinza] (v1) at (0, 2) {$v_1$};
+            \node[vertex, cinza] (v2) at (0, 0) {$v_2$};
+            \node[vertex, azul] (v3) at (2.2, 1) {$v_3$};
+            \node[vertex, vermelho] (v4) at (4.4, 0) {$v_4$};
+            \node[vertex, vermelho] (v5) at (4.4, 2) {$v_5$};
+            \node[vertex, branco] (v6) at (6.6, 1) {$v_6$};
+            \draw[arco] (v1) -- (v3);
+            \draw[arco] (v3) -- (v2);
+            \draw[arco] (v4) -- (v2);
+            \draw[arco] (v3) -- (v4);
+            \draw[arco] (v1) -- (v5);
+            \draw[arco] (v5) -- (v3);
+            \draw[arco] (v6) -- (v4);
+            \draw[arco] (v5) -- (v6);
+
+        \end{tikzpicture}
+        \caption{Etapa 2: $v_4$ é infectado pelos vértices $v_2$ e $v_3$ e o vértice $v_5$ é infectado pelos vértices $v_1$ e $v_3$.}\label{fig:inf-c}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=.6,
+            vertex/.style={circle, draw, thick, minimum size=0.9cm, font=\normalsize},
+            arco/.style={-{Latex[length=2mm, width=2.4mm]}, line width=1.1pt},
+            branco/.style={fill=white},
+            cinza/.style={fill=gray!40, draw=gray!70!black},
+            azul/.style={fill=blue!20, draw=blue!60!black},
+            vermelho/.style={fill=red!30, draw=red!70!black}
+        ]
+            \node[vertex, cinza] (v1) at (0, 2) {$v_1$};
+            \node[vertex, cinza] (v2) at (0, 0) {$v_2$};
+            \node[vertex, azul] (v3) at (2.2, 1) {$v_3$};
+            \node[vertex, azul] (v4) at (4.4, 0) {$v_4$};
+            \node[vertex, azul] (v5) at (4.4, 2) {$v_5$};
+            \node[vertex, vermelho] (v6) at (6.6, 1) {$v_6$};
+            \draw[arco] (v1) -- (v3);
+            \draw[arco] (v3) -- (v2);
+            \draw[arco] (v4) -- (v2);
+            \draw[arco] (v3) -- (v4);
+            \draw[arco] (v1) -- (v5);
+            \draw[arco] (v5) -- (v3);
+            \draw[arco] (v6) -- (v4);
+            \draw[arco] (v5) -- (v6);
+
+        \end{tikzpicture}
+        \caption{Etapa 3: $v_6$ é infectado pelos vértices $v_4$ e $v_5$. Todo o grafo está infectado.}\label{fig:inf-d}
+    \end{subfigure}
+
+    \caption{Processo de infecção na convexidade $P_3$ direcionada a partir do conjunto de envoltória $S=\{v_1,v_2\}$. $ti(G) = 3$}\label{fig:convexidade-p3-processo}
+\end{figure}
+
+Se dado um subconjunto $S \subseteq V(D)$, $I(S) = V(D)$ em um única iteração, temos que $S$ é um \emph{conjunto de intervalo}. Com isso, temos um outro parâmetro bastante estudado em convexidade, o \emph{número de intervalo}, denotado por $in(D)$, que é basicamente o tamanho do menor conjunto de intervalo em $D$. Denotamos o número de intervalo direcionado como $\overrightarrow{in}(D)$.
+
+\begin{figure}[H]
+    \centering
+	\begin{tikzpicture}[scale=.6,
+            vertex/.style={circle, draw, minimum size=0.8cm, font=\small},
+            branco/.style={fill=white},
+	    arco/.style={-{Latex[length=2mm, width=2.4mm]}, line width=1.1pt},
+            vermelho/.style={fill=red!30, draw=red!70!black},
+            cinza/.style={fill=gray!40, draw=gray!70!black}
+        ]
+
+	\node[vertex, cinza] (v1) at (2.5, 3)  {$v_1$};
+        \node[vertex, branco]   (v2) at (0,   1.5){$v_2$};
+        \node[vertex, branco]   (v3) at (5,   1.5){$v_3$};
+        \node[vertex, cinza] (v4) at (1,   0)  {$v_4$};
+        \node[vertex, cinza] (v5) at (4,   0)  {$v_5$};
+        \node[vertex, cinza] (v6) at (8,   0)  {$v_6$};
+        \node[vertex, branco]   (v7) at (10,  1.5){$v_7$};
+        \node[vertex, cinza] (v8) at (8,   3)  {$v_8$};
+
+        \draw[arco] (v1) -- (v2);
+        \draw[arco] (v1) -- (v3);
+        \draw[arco] (v1) -- (v4);
+        \draw[arco] (v2) -- (v3);
+        \draw[arco] (v2) -- (v4);
+        \draw[arco] (v3) -- (v5);
+        \draw[arco] (v1) -- (v8);
+        \draw[arco] (v3) -- (v8);
+        \draw[arco] (v8) -- (v6);
+        \draw[arco] (v3) -- (v7);
+        \draw[arco] (v7) -- (v8);
+        \draw[arco] (v6) -- (v7);
+    \end{tikzpicture}
+    \caption{Os vértices em cinza formam um conjunto de intervalo com cardinalidade 5.}\label{fig:convexidade-p3}
+\end{figure}
+
+Dado um grafo $G$ e um parâmetro de convexidade, o \emph{espectro} de um determinado parâmetro é o conjunto de valores que o parâmetro assume em todas as possíveis orientações de $G$, denotado por $S_c$, onde $c$ é uma convexidade de sua escolha, por exemplo, $S_g$ é o espectro \emph{geodésico}. Formalmente o conceito de espectro foi introduzido na convexidade geodésica em \textit{Geodetic Spectra of graphs}~\cite{CHANG2004}, em que o parâmetro estudado foi o \emph{número de intervalo} que também é chamado de \emph{número geodésico}, também foi introduzido o conceito de \emph{espectro geodésico forte}, em que temos apenas orientações fortes do grafo $G$, vale ressaltar que um grafo $G$ tem orientações fortes se e somente se não tem pontes e é conexo.
+
+Dizemos que o espectro é \emph{contínuo} se o mesmo assume todos os valores inteiros no intervalo entre o limite inferior e o limite superior.

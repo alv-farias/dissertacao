@@ -1,0 +1,69 @@
+\chapter{Algoritmo polinomial para conjunto de intervalo \texorpdfstring{$\overrightarrow{P_3}$}{P3}}
+
+Apresentamos o seguinte algoritmo para calcular o \emph{Interval Set} em árvores orientadas. Consideremos $S \subseteq V(T)$ um conjunto de intervalo e que qualquer vértice extremo $v$ obrigatoriamente está em $S$, seja $Ext(T)$ o conjunto de vértices extremos em $T$.
+
+\begin{algorithm}
+  \SetAlgoLined
+  \Entrada{$T, Ext(T)$}
+  \Saida{\emph{Interval Set de T}}
+  Inicialize $r^-(v) = 1$ e $r^+(v) = 1$ para todo $v \in V(T)$\\
+  $S \leftarrow Ext(T)$\\
+  Seja $(v_1, v_2, \ldots, v_n)$ uma pós-ordem de $T$\\
+  \Para{$i \leftarrow 1, 2, \ldots, n$}{
+    Seja $\pi$ pai de $v_i$ em $T$\\
+    \Se{$v \in S$}{
+      \Se{$\pi \in N^+(v)$}{
+        $r^-(\pi) \leftarrow r^-(\pi) - 1$
+      }
+      \Se{$\pi \in N^-(v)$}{
+        $r^+(\pi) \leftarrow r^+(\pi) - 1$
+      }      
+    }
+    \Se{$v \notin S$}{
+      \Se{$r^-(v) = 1$ e $r^+(v) = 1$}{
+        $S \leftarrow S \cup \{v\}$
+      }
+      \Se{$r^-(v) \leq 0$ e $r^+(v) = 1$}{
+        \Se{$\pi \in N^+(v)$ e $\pi \notin S$}{
+          $S \leftarrow S \cup \{\pi\}$
+        }
+        \Se{$\pi \in N^-(v)$}{
+          $S \leftarrow S \cup \{v\}$\\
+          $r^+(\pi) \leftarrow r^+(\pi) - 1$
+        }
+      }
+      \Se{$r^-(v) = 1$ e $r^+(v) \leq 0$}{
+        \Se{$\pi \in N^-(v)$ e $\pi \notin S$}{
+          $S \leftarrow S \cup \{\pi\}$
+        }
+        \Se{$\pi \in N^+(v)$}{
+          $S \leftarrow S \cup \{v\}$\\
+          $r^-(\pi) \leftarrow r^-(\pi) - 1$
+        }
+      }
+    }
+  }
+  \caption{Interval Set em Árvores orientadas}\label{alg1}
+\end{algorithm}
+
+\begin{theorem}
+  Algoritmo \ref{alg1} retorna o menor conjunto de intervalo para a árvore T
+  \begin{proof}
+  Seja $I^* = (i^*_1, \ldots, i^*_j, \ldots, i^*_n)$ uma sequência de escolhas ótimas para obtermos o \emph{Interval Set} de T, onde $i^*_i = 1$ se o vértice $v_i$ está no \emph{conjunto de intervalo} e $0$ caso contrário. Além disso, seja $S = (s_1, \ldots, s_j, \ldots, s_n)$ a sequência de escolhas feita pelo \emph{Algoritmo 1}. Se $I^*=S$, está resolvido. Suponha que $I^* \neq S$, neste caso, seja $i$ a primeira posição em que as sequências diferem.
+
+  Suponha primeiro que $i^*_i = 0$ e $s_i = 1$, ou seja, o vértice $v_i$ foi escolhido pelo \emph{algoritmo} mas não pela sequência $I^*$. Com isso temos os seguintes casos:
+
+  \begin{enumerate}
+    \item Neste caso, $v_i$ entrou na condicional \textbf{15}, como $I^*$ e $S$ concordam em todas as posições anteriores a $i$, temos que os filhos de $v_i$ não estão em $I^*$, caso contrário, o algoritmo não entraria na condicional 15. O único vizinho restante de $v_i$ é seu pai $\pi$, mas mesmo que $\pi \in I^*$, se $v_i \notin I^*$, então $v_i$ não seria gerado por $I^*$, contradizendo o fato de $I^*$ ser \emph{Interval Set}.
+    \item Neste caso, $v_i$ entrou na condicional \textbf{22}, como $I^*$ e $S$ concordam em todos os filhos de $v_i$, então $v_i$ possui pelo menos um filho em $N^-(v_i)$ que está em $S$, mas nenhum filho em $N^+(v_i)$ que está em $S$. Além disso, o pai $\pi \in N^-(v_i)$. O único vizinho restante de $v_i$ é seu pai $\pi$, mas mesmo que $I^*$ escolha $\pi$, como $\pi \in N^-(v_i)$ e $I^*\cap N^+(v_i) = \emptyset$, então $I^*$ não gera $v_i$, um absurdo.
+    \item Condicional \textbf{31} é análoga ao caso anterior.
+  \end{enumerate}
+
+  Agora suponha que $i^*_i=1$ e $s_i = 0$, ou seja, o vértice $v_i$ foi escolhido pela sequência $I^*$ mas não pelo \emph{algoritmo}. Com isso temos os seguintes casos:
+
+  \begin{enumerate}
+    \item O algoritmo não escolheu $v_i$ pois entrou na condicional \textbf{19}. Como $v_i \in I^*$, então seu pai $\pi \notin I^*$, pois caso contrário, obteríamos um conjunto de intervalo menor, neste caso, $I^*\backslash \{v_i\}$. Mas perceba que $I'^* = I^*\backslash \{v_i\} \cup \{\pi\}$ continua sendo conjunto de intervalo tal que $|I^*| = |I'^*|$, portanto, mínimo e concorda em mais uma posição com a sequência $S$.
+    \item Condicional \textbf{28} é análoga ao caso anterior.
+  \end{enumerate}
+  \end{proof}
+\end{theorem}

@@ -1,0 +1,108 @@
+\chapter{Espectro do número de intervalo \texorpdfstring{$\overrightarrow{P_3}$}{P3}}
+
+O espectro em um determinado parâmetro é o conjunto de valores que o parâmetro assume em todas as orientações possíveis de um grafo. O objetivo deste trabalho é analisar o espectro do \textit{número de intervalo} na convexidade $\overrightarrow{P_3}$ denotado por $S_{\overrightarrow{P_3}}(G) = \{\overrightarrow{in}(D) \mid \textit{D é uma orientação de G}\}$. Dizemos que o espectro é contínuo quando o parâmetro assume todos os valores inteiros no intervalo entre o limite inferior e o limite superior.
+
+\section{Continuidade do espectro na convexidade \texorpdfstring{$\overrightarrow{P_3}$}{P3} orientada}
+
+Dado um grafo $G$, se encontramos as orientações $D^+$ e $D^-$ desse grafo que tornam o seu número de intervalo máximo e mínimo, respectivamente, gostaríamos de poder afirmar que existe uma orientação $D_k$ que, para qualquer número inteiro $k$ entre $\overrightarrow{in}(D^+)$ e $\overrightarrow{in}(D^-)$, faz que $\overrightarrow{in}(D_k)=k$, isto é, todos os inteiros no intervalo entre os elementos máximo e mínimo do espectro também pertencem ao espectro, assim o espectro é um intervalo de inteiros e dizemos que é \textit{contínuo}.
+
+Essa \textit{continuidade} do espectro não acontece para todos os grafos em todas as convexidades, mas para qualquer grafo o espectro do número de intervalo na convexidade $\overrightarrow{P_3}$ é contínuo; para mostrar isso, utilizaremos o seguinte lema.
+
+\begin{lemma}
+    \textit{Se $D$ é um grafo orientado e $D'$ é uma orientação obtida ao inverter o sentido de exatamente um arco de $D$, então $\lvert \overrightarrow{in}(D) - \overrightarrow{in}(D') \lvert \leq 1$}.\label{lem:inv}
+    
+\end{lemma}
+\begin{proof}
+    Seja $S$ um conjunto de intervalo minimal no grafo orientado $D$ e, assim, $\overrightarrow{in_{P_3}}(D)=\lvert S \lvert$. Sendo, também, $D'$ uma orientação obtida invertendo o arco $(u,v)\in A(D)$, logo $V(D')=V(D)$ e $A(D')=(A(D)-\{ (u,v) \})\cup \{ (v,u) \}$ e $S'$ um conjunto de intervalo minimal em $D'$.
+
+    Vamos mostrar que nos casos que $\lvert S\lvert \neq \lvert S'\lvert$ a diferença entre os números de intervalo é de $1$.
+    
+    \noindent \textbf{Caso 1:} $u,v \notin S$ ou $u,v \in S$
+
+    Note que $S$ também é um conjunto de intervalo em $D'$, logo $\overrightarrow{in}(D') \leq \overrightarrow{in}(D)$. Suponha, então, que $\lvert S'\lvert < \lvert S \lvert$. 
+
+    Temos, em $D'$, que todo vértice $w\in V(D')$, $w\in S'$ ou $w$ possui um vizinho de entrada e um vizinho de saída em $S'$. E, também, não ocorrem os casos que $u,v\in S'$ e $u,v\notin S'$. De fato, nesses casos, $S'$ também seria um conjunto de intervalo em $D$, o que é absurdo pela minimalidade de $S$.
+    
+    Supondo, então, que $u\in S'$ e $v\notin S'$, assim, em $D$, para todo $w\in V(D)-\{ v \}$, $w\in S'$ ou $w$ possui um vizinho de entrada e um vizinho de saída que pertence a $S'$, logo $S'\cup \{ v \}$ é um conjunto de intervalo de $D$ e, assim, $\lvert S' \lvert <\lvert S\lvert \leq \lvert S' \cup \{ v \} \lvert = \lvert S'\lvert +1$; portanto, $\overrightarrow{in}(D)=\overrightarrow{in}(D') +1$. Vale notar ainda que, em $D$, $v$ não pode ter vizinho de saída em $S'$, pois, caso ocorresse, $S'$ seria conjunto de intervalo de $D$, o que é absurdo pela minimalidade de $S$. Essa observação é equivalente a dizer que $u$ é o único vizinho de saída de $v$ em $D'$.
+    
+    Análogo ao parágrafo anterior, supondo $u\notin S'$ e $v\in S'$, temos que $S'\cup \{ u\}$ é conjunto de intervalo em $D$ e, portanto, $\overrightarrow{in}(D)=\overrightarrow{in}(D') +1$.
+
+    \noindent \textbf{Caso 2:} $u \in S$ e $v \notin S$
+
+    Perceba que, sendo $S'$ um conjunto de intervalo minimal em $D'$, pelo caso anterior, não precisamos fazer os casos que $u,v\in S'$ e $u,v\notin S'$ para evitar repetição.
+
+    Supondo $u\in S'$ e $v\notin S'$, temos que, se $\lvert S'\lvert < \lvert S\lvert$, então, para todo $w\in V(D)-(S'\cup\{ v \})$ existem vizinho de entrada e vizinho de saída de $w$ que pertence a $S'$, logo $S'\cup \{v\}$ é conjunto de intervalo de $D$ e, assim, $\lvert S' \lvert<\lvert S\lvert \leq \lvert S' \cup \{ v \} \lvert = \lvert S'\lvert +1$; portanto, $\overrightarrow{in}(D)=\overrightarrow{in}(D') +1$. Analogamente, se $\lvert S\lvert < \lvert S'\lvert$, então, para todo $w\in V(D')-(S\cup\{ v \})$ existem vizinho de entrada e vizinho de saída de $w$ que pertence a $S$, logo $S\cup \{v\}$ é conjunto de intervalo de $D'$ e, assim, $\lvert S \lvert<\lvert S'\lvert \leq \lvert S \cup \{ v \} \lvert = \lvert S\lvert +1$; portanto, $\overrightarrow{in}(D')=\overrightarrow{in}(D) +1$.
+
+    Com uma argumentação análoga a do paragrafo anterior, supondo que $u\notin S'$ e $v\in S'$, se $\lvert S'\lvert < \lvert S\lvert$, então $S'\cup \{ u \}$ é conjunto de intervalo de $D$, portanto $\overrightarrow{in}(D)=\overrightarrow{in}(D') +1$. E, se $\lvert S\lvert < \lvert S'\lvert$, então $S\cup \{u\}$ é conjunto de intervalo de $D'$, portanto, $\overrightarrow{in}(D')=\overrightarrow{in}(D) +1$.
+    
+    \noindent \textbf{Caso 3:} $u \notin S$ e $v \in S$
+
+    Está totalmente provado pelos casos anteriores.
+\end{proof}
+
+O resultado da continuidade do espectro pode ser visto como um teorema utiliza o lema~\ref{lem:inv} apresentado anteriormente, e está enunciado a seguir.
+
+\begin{theorem}
+    \textit{Para qualquer grafo, o espectro do número de intervalo na convexidade $\overrightarrow{P_3}$ é contínuo, isto é, se $k_1,k_2\in S_{\overrightarrow{P_3}}(G)$ e $k_1\leq k\leq k_2$, $k\in \mathbb{N}$, então $k\in S_{\overrightarrow{P_3}}(G)$.}\label{teo:inv}
+\end{theorem}
+% \noindent\textit{Ideia da demonstração.} Quaisquer duas orientações de um grafo $G$ podem ser obtidas, uma da outra, por uma sequência de mudanças de sentido de seus arcos e, assim, pelo Lema \ref{lem:inv}, o número de intervalo de orientações vizinhas nessa sequência só aumenta, ou diminui, em no máximo um. Com isso podemos provar o resultado por indução.
+
+\begin{proof}
+  Seja $D^+$ e $D^-$ as orientações do grafo $G$ que tornam o seu número de intervalo máximo e mínimo, respectivamente, com valores $\overrightarrow{in}(D^+)$ e $\overrightarrow{in}(D^-)$. Perceba que se $\overrightarrow{in}(D^+) = \overrightarrow{in}(D^-)$, o espectro é trivialmente contínuo.
+
+  Qualquer par de orientações de $G$ pode ser transformada uma na outra com uma sequência finita de inversões dos arcos. Fixamos tal sequência que inicia na orientação $D^-$ e transforma na orientação $D^+$.
+
+  Seja a sequência denotada por $O = \{D_0, D_1, \ldots, D_m\}$, onde $D_0 = D^-$ e $D_m = D^+$. Para $1 \leq n \leq m$, cada orientação $D_n$ é obtida invertendo exatamente um arco de $D_{n-1}$. Seja $S_{n} = \{\overrightarrow{in}(D) \mid \textit{D é uma orientação de G}\}$ o conjunto de todos os valores do número de intervalo após as $n$ primeiras inversões.
+
+  \noindent \textbf{Caso base:} ($n = 1$) Apenas uma inversão é feita, logo, $S_1 = \{\overrightarrow{in}(D_0), \overrightarrow{in}(D_1)\}$. Pelo lema~\ref{lem:inv}, temos que a variação entre $\overrightarrow{in}(D_0)$ e $\overrightarrow{in}(D_1)$ é no máximo 1. Como $\overrightarrow{in}(D_0)$ é o valor mínimo dentre todas as orientações do grafo $G$, esse valor não pode decrescer, logo, $\overrightarrow{in}(D_1) \in \{\overrightarrow{in}(D_0), \overrightarrow{in}(D_0)+1\}$. Em ambos os casos, $S_n$ é contínuo.
+
+   Assuma para um inteiro $n$ tal que $1\leq n < m$ que a proposição é válida para todos os passos até $n$, ou seja, $S_1, S_2, \ldots, S_n$ são todos contínuos e que iniciam em $\overrightarrow{in}(D_0)$, seja $i_{\min} =  \overrightarrow{in}(D_0)$. Neste caso, temos que $S_n = \{i_{\min}, \ldots, i_n\} $ \alv{usar apenas uma notação para indicar o mínimo do conjunto e indicar que $i_{min}$ é o menor valor de $S_n$ e também do espectro e manter o $i_n$ como máximo atual, talvez isso possa ser citado diretamente nos casos}, onde $i_n$ é o maior valor obtido até a orientação $D_n$.
+
+   Precisamos mostrar que $S_{n+1} = S_n \cup \{\overrightarrow{in}(D_{n+1})\}$ é contínuo. Pelo lema~\ref{lem:inv} temos que  $\overrightarrow{in}(D_{n+1}) \in \{\overrightarrow{in}(D_{n})-1, \overrightarrow{in}(D_{n}), \overrightarrow{in}(D_{n})+1\}$. Pela hipótese indutiva, $S_n$ é contínuo e contém $\overrightarrow{in}(D_n)$, logo, analisamos os seguintes casos:
+
+  \noindent \textbf{Caso 1:} Se $\overrightarrow{in}(D_{n+1}) = \overrightarrow{in}(D_n)$, o valor obtido já existe no conjunto $S_n$. Portanto, $S_n = S_{n+1}$ e contínuo.
+
+  \noindent \textbf{Caso 2:} Se $\overrightarrow{in}(D_{n+1}) = \overrightarrow{in}(D_n)-1$, como $i_{\min}$ é o valor mínimo, o novo valor não pode ser menor que $i_{\min}$. Como o mesmo é estritamente menor que $i_{n}$, o valor $\overrightarrow{in}(D_n)-1$ já existe em $S_n$ pela hipótese de indução. Portanto, $S_n = S_{n+1}$, contínuo.
+
+  \noindent \textbf{Caso 3:} Se $\overrightarrow{in}(D_{n+1}) = \overrightarrow{in}(D_n)+1$, caso $\overrightarrow{in}(D_n)$ seja menor que $i_{n}$, o novo valor já está em $S_n$. O único caso em que o conjunto aumenta é quando $\overrightarrow{in}(D_n) = i_n$, neste caso, $\overrightarrow{in}(D_{n+1}) = i_n + 1$ e o limite superior aumenta em no máximo um. Portanto, $S_{n+1}$ é contínuo.
+
+  Com isso, temos que o espectro do número de intervalo na convexidade $\overrightarrow{P_3}$ é contínuo.
+
+\end{proof}
+
+% \begin{theorem}
+%     \textit{Para qualquer grafo, o espectro do número de intervalo na convexidade $\overrightarrow{P_3}$ é contínuo, isto é, se $k_1,k_2\in S_{\overrightarrow{P_3}}(G)$ e $k_1\leq k\leq k_2$, $k\in \mathbb{N}$, então $k\in S_{\overrightarrow{P_3}}(G)$.}\label{teo:inv}
+% \end{theorem}
+
+% \noindent\textit{Ideia da demonstração.} Quaisquer duas orientações de um grafo $G$ podem ser obtidas, uma da outra, por uma sequência de mudanças de sentido de seus arcos e, assim, pelo Lema \ref{lem:inv}, o número de intervalo de orientações vizinhas nessa sequência só aumenta, ou diminui, em no máximo um. Com isso podemos provar o resultado por indução.
+
+
+\section{Limitantes do espectro do número de intervalo em árvores, caminhos e ciclos}
+
+
+\begin{theorem}
+  \textit{Seja $G$ um grafo com $n \ge 3$ vértices. O espectro do número de intervalo na convexidade $\overrightarrow{P}_3$, denotado por $S_{\overrightarrow{P_3}}(G)$, é um intervalo contínuo de inteiros definido da seguinte forma para classes abaixo:}
+  \begin{itemize}[leftmargin=*]
+      \item  \textit{\textbf{Para árvores $T$:} $S_{\overrightarrow{P_3}}(T) = \{in^{-}(T), \ldots, n\}$, \textit{onde $in^-(T)$ é o menor valor do número de intervalo entre todas as orientações.}
+      \item \textbf{Para caminhos $P_n$:} $S_{\overrightarrow{P_3}}(P_n) = \{\ceil{\frac{n+1}{2}}, \ldots, n\}$.}
+      \item \textit{\textbf{Para ciclos $C_n$: } $S_{\overrightarrow{P_3}}(C_n) = \{\ceil{\frac{n}{2}}, \ldots, n-1\}$ se $n$ for ímpar, e $S_{\overrightarrow{P_3}}(C_n) = \{\frac{n}{2}, \ldots, n \}$ se $n$ for par.}
+  \end{itemize}
+
+  \begin{proof}
+    A demonstração divide-se na análise dos limites extremos para cada classe e, subsequentemente, na prova da continuidade do espectro entre esses limites.
+
+    \begin{enumerate}[leftmargin=*]
+        \item \textbf{Limites Superiores:} Em~\cite{CHARTRAND2002115} temos que um vértice é extremo se ele é fonte, sumidouro ou transitivo. Além disso, todos os vértices extremos em um grafo orientado conexo devem estar em um conjunto de envoltória~\cite{CHARTRAND2003}. Como árvores, caminhos e ciclos pares são grafos bipartidos\cite{west2001introduction}, é possível orientar suas arestas de modo que uma partição $A$ do conjunto de vértices contenha apenas fontes e uma partição $B$ contenha apenas sumidouros. Nessa orientação, todos os vértices são considerados extremos, portanto, $\overrightarrow{in}(D)_T = \overrightarrow{in}(D)_{P_n} = \overrightarrow{in}(D)_{C_{2k}} = n$. Por outro lado, por conta da paridade, ciclos ímpares não são bipartidos. É fácil ver que pelo menos um vértice no ciclo terá vizinho de entrada e um vizinho de saída para maximizar o número de vértices extremos, logo, obtemos $in(D)_{C_{2k+1}} = n-1$.
+
+        \item \textbf{Limites Inferiores:} Pela função de intervalo da convexidade $\overrightarrow{P_3}$ se o vértice $v$ tem pelo menos um vizinho de saída e um vizinho de entrada no conjunto de envoltória $S$, $v \in S$. Consequentemente, os vértices que pertencem a $V(G) \setminus S$ formam, obrigatoriamente, um conjunto independente no grafo.
+    
+        Para ciclos $C_n$, o tamanho máximo de um conjunto independente é $\lfloor \frac{n}{2} \rfloor$, impondo um valor mínimo para o número de vértices que estão em um conjunto de envoltória de $n - \lfloor \frac{n}{2} \rfloor = \lceil \frac{n}{2} \rceil$, limite este alcançado quando a orientação é um ciclo direcionado.
+    
+        Para caminhos $P_n$, os vértices das extremidades são folhas, logo são vértices extremos e devem pertencer a um conjunto de envoltória $S$. Os $n-2$ vértices internos formam um subcaminho cujo maior conjunto independente tem tamanho $\floor{\frac{n-2}{2}}$. Assim, o tamanho mínimo de $S$ é $2 + (n-2) - \floor{\frac{n-2}{2}} = \ceil{\frac{n+1}{2}}$, limite alcançado orientando o caminho para uma só direção.
+
+        \item \textbf{Continuidade do Espectro:} Pelo Teorema\ref{teo:inv}, temos de forma direta que o espectro para árvores, caminhos e ciclos são contínuos.
+    \end{enumerate}  
+
+\end{proof}
+    
+\end{theorem}

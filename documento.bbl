@@ -1,0 +1,83 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.7 }
+
+\bibitem[ARAÚJO \textit{et al.} 2023]{julio}
+\abntrefinfo{ARAÚJO \textit{et al.}}{ARAÚJO \textit{et al.}}{2023}
+{ARAÚJO, J.; DOURADO, M.; PROTTI, F.; SAMPAIO, R. \textbf{Uma introdução à
+  convexidade em grafos}. [S.l.]: Editora do IMPA, 2023.}
+
+\bibitem[Bang-Jensen e Gutin 2001]{bang2001}
+\abntrefinfo{Bang-Jensen e Gutin}{BANG-JENSEN; GUTIN}{2001}
+{BANG-JENSEN, J.; GUTIN, G. \textbf{Digraphs: Theory, Algorithms, and
+  Applications}. Springer, 2001.  (Monographs in Mathematics).
+ISBN 9781852332686. Dispon{\'\i}vel em:
+  \url{https://books.google.com.br/books?id=d3gpAQAAMAAJ}.}
+
+\bibitem[Centeno \textit{et al.} 2009]{CENTENO200911}
+\abntrefinfo{Centeno \textit{et al.}}{CENTENO \textit{et al.}}{2009}
+{CENTENO, C.~C.; DOURADO, M.~C.; SZWARCFITER, J.~L. On the convexity of paths
+  of length two in undirected graphs.
+\textbf{Electronic Notes in Discrete Mathematics}, v.~32, p. 11--18, 2009.
+ISSN 1571-0653.
+DIMAP Workshop on Algorithmic Graph Theory.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/S1571065309000043}.}
+
+\bibitem[Chang \textit{et al.} 2004]{CHANG2004}
+\abntrefinfo{Chang \textit{et al.}}{CHANG \textit{et al.}}{2004}
+{CHANG, G.~J.; TONG, L.-D.; WANG, H.-T. Geodetic spectra of graphs.
+\textbf{European Journal of Combinatorics}, v.~25, n.~3, p. 383--391, 2004.
+ISSN 0195-6698.}
+
+\bibitem[Chartrand \textit{et al.} 2002]{CHARTRAND2002115}
+\abntrefinfo{Chartrand \textit{et al.}}{CHARTRAND \textit{et al.}}{2002}
+{CHARTRAND, G.; {Frederick Fink}, J.; ZHANG, P. Convexity in oriented graphs.
+\textbf{Discrete Applied Mathematics}, v.~116, n.~1, p. 115--126, 2002.
+ISSN 0166-218X.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/S0166218X00003826}.}
+
+\bibitem[Erdös \textit{et al.} 1972]{ERDOS1972}
+\abntrefinfo{Erdös \textit{et al.}}{ERDöS \textit{et al.}}{1972}
+{ERDöS, P.; FRIED, E.; HAJNAL, A.; MILNER, E. Some remarks on simple
+  tournaments.
+\textbf{Algebra Universalis}, v.~2, p. 238--245, 12 1972.}
+
+\bibitem[Gary \textit{et al.} 2003]{CHARTRAND2003}
+\abntrefinfo{Gary \textit{et al.}}{GARY \textit{et al.}}{2003}
+{GARY, C.; FINK, J.; PING, Z. The hull number of an oriented graph.
+\textbf{International Journal of Mathematics and Mathematical Sciences},
+  v.~2003, 06 2003.}
+
+\bibitem[Harary \textit{et al.} 1993]{HARARY199389}
+\abntrefinfo{Harary \textit{et al.}}{HARARY \textit{et al.}}{1993}
+{HARARY, F.; LOUKAKIS, E.; TSOUROS, C. The geodetic number of a graph.
+\textbf{Mathematical and Computer Modelling}, v.~17, n.~11, p. 89--95, 1993.
+ISSN 0895-7177.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/0895717793902592}.}
+
+\bibitem[Harary e Nieminen 1981]{harary1981}
+\abntrefinfo{Harary e Nieminen}{HARARY; NIEMINEN}{1981}
+{HARARY, F.; NIEMINEN, J. Convexity in graphs.
+\textbf{Journal of Differential Geometry}, v.~16, p. 185--190, 1981.}
+
+\bibitem[Penso \textit{et al.} 2015]{PENSO201583}
+\abntrefinfo{Penso \textit{et al.}}{PENSO \textit{et al.}}{2015}
+{PENSO, L.~D.; PROTTI, F.; RAUTENBACH, D.; {dos Santos Souza}, U. Complexity
+  analysis of p3-convexity problems on bounded-degree and planar graphs.
+\textbf{Theoretical Computer Science}, v.~607, p. 83--95, 2015.
+Algorithmic Aspects in Information and Management.}
+
+\bibitem[West 2001]{west2001introduction}
+\abntrefinfo{West}{WEST}{2001}
+{WEST, D. \textbf{Introduction to Graph Theory}. Prentice Hall, 2001.
+  (Featured Titles for Graph Theory).
+ISBN 9780130144003. Dispon{\'\i}vel em:
+  \url{https://books.google.com.br/books?id=TuvuAAAAMAAJ}.}
+
+\end{thebibliography}
