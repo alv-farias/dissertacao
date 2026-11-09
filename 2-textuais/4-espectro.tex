@@ -1,6 +1,30 @@
 \chapter{Espectro do número de intervalo P3 orientado}
 
-O espectro em um determinado parâmetro é o conjunto de valores que o parâmetro assume em todas as orientações possíveis de um grafo. O objetivo deste trabalho é analisar o espectro do \textit{número de intervalo} na convexidade $\overrightarrow{P_3}$ denotado por $S_{\overrightarrow{P_3}}(G) = \{\overrightarrow{in}(D) \mid \textit{D é uma orientação de G}\}$. Dizemos que o espectro é contínuo quando o parâmetro assume todos os valores inteiros no intervalo entre o limite inferior e o limite superior.
+Os resultados dessa sessão foram publicados como resumo expandido nos anais do \emph{XI Encontro de Teoria da Computação}~\cite{ALVARO2026}. O problema do espectro em convexidade busca entender principalmente como as orientações de um determinado grafo afetam o valor de um determinado parâmetro. Em~\cite{Lu2007}, por exemplo, é investigado se para algum grafo $G$, o \emph{número de intervalo} $in(G)$ está no seu espectro geodésico e verificar quais classes de grafos possuem a propriedade $in(G) \in S_g(G)$ ou $in(G) \notin S_g(G)$.
+
+O \emph{número de intervalo} foi introduzido em~\cite{HARARY199389} e em~\cite{CHARTRAND2000181} o parâmetro foi estendido para grafos orientados. Ainda em~\cite{CHARTRAND2000181} foram introduzidos dois parâmetros importantes para o estudo do espectro. O \emph{número de intervalo inferior}, denotado por $in^-(G)$ e o \emph{número de intervalo superior}, denotado por $in^+(G)$. Basicamente, é o menor valor obtido dentre todas as possíveis orientações de $G$ e o maior valor obtido dentre todas as possíveis orientações de $G$.
+
+Observe que os parâmetros $in^-(G)$ e $in^+(G)$ são os limites de qualquer espectro do número de intervalo. Ainda em~\cite{HARARY199389} foi o seguinte problema na convexidade geodésica foi enunciado:
+
+\begin{pro}
+	Para cada grafo conexo $G$ e todo inteiro $k$ com $in^-(G) \leq k \leq in^+(G)$, existe uma orientação $D$ de $G$ com $g(D) = k$?
+\end{pro}
+
+A resposta para este problema é não e é apresentada no mesmo artigo, a justificativa é que a inversão de um arco $a$ para obter uma nova orientação do grafo $G$, não garante que o valor do \emph{número de intervalo} varia em no máximo 1. Além disso, é caracterizado o espectro em algumas classes de grafos, tendo resultados de continuidade e resultados em que o espectro tem um \emph{gap} entre os valores.
+
+\begin{theorem}[\cite{CHANG2004}]
+	Para todo $n \geq 3$, seja $C_n$ um ciclo com $n$ vértices, $S_g(C_n) = \{3\} \cup \{2s \lvert 1 \leq s \leq \floor{\frac{n}{2}}\}$
+\end{theorem}
+
+\begin{theorem}[\cite{CHANG2004}]
+	Se T é uma árvore com l folhas, $S_g(T)$ é contínuo com limite inferior igual a $l$ e limite superior igual a $n$.
+\end{theorem}
+
+Isso nos leva a questionar se o problema do \emph{espectro} poderia ser contínuo em uma outra convexidade. Em~\cite{ALVARO2026}, temos um estudo do problema do \emph{espectro} do número de intervalo na convexidade dos caminhos de tamanho 2 direcionados.
+
+O principal resultado apresentado é o lema que aborda justamente a variação do número de intervalo em no máximo 1. Já que essa variação era o problema na convexidade \emph{geodésica}, o natural era checar como essa inversão do arco impactaria em uma outra convexidade.
+
+Como falado anteriormente na sessão~\ref{espectro-basico}, o espectro em um determinado parâmetro é o conjunto de valores que o parâmetro assume em todas as orientações possíveis de um grafo. O objetivo desta sessão é analisar o espectro do \textit{número de intervalo} na convexidade $\overrightarrow{P_3}$ denotado por $S_{\overrightarrow{P_3}}(G) = \{\overrightarrow{in}(D) \mid \textit{D é uma orientação de G}\}$ e sua continuidade.
 
 \section{Continuidade do espectro}
 

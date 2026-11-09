@@ -17,6 +17,12 @@
 ISBN 9781852332686. Dispon{\'\i}vel em:
   \url{https://books.google.com.br/books?id=d3gpAQAAMAAJ}.}
 
+\bibitem[Calder 1971]{calder1971}
+\abntrefinfo{Calder}{CALDER}{1971}
+{CALDER, J.~R. Some elementary properties of interval convexities.
+\textbf{Journal of the London Mathematical Society}, London, v.~2, n.~3, p.
+  422--428, 1971.}
+
 \bibitem[Centeno \textit{et al.} 2009]{CENTENO200911}
 \abntrefinfo{Centeno \textit{et al.}}{CENTENO \textit{et al.}}{2009}
 {CENTENO, C.~C.; DOURADO, M.~C.; SZWARCFITER, J.~L. On the convexity of paths
@@ -41,11 +47,27 @@ ISSN 0166-218X.
 Dispon{\'\i}vel em:
   \url{https://www.sciencedirect.com/science/article/pii/S0166218X00003826}.}
 
+\bibitem[Chartrand e Zhang 2000]{CHARTRAND2000181}
+\abntrefinfo{Chartrand e Zhang}{CHARTRAND; ZHANG}{2000}
+{CHARTRAND, G.; ZHANG, P. The geodetic number of an oriented graph.
+\textbf{European Journal of Combinatorics}, v.~21, n.~2, p. 181--189, 2000.
+ISSN 0195-6698.
+Dispon{\'\i}vel em:
+  \url{https://www.sciencedirect.com/science/article/pii/S0195669899903013}.}
+
 \bibitem[Erdös \textit{et al.} 1972]{ERDOS1972}
 \abntrefinfo{Erdös \textit{et al.}}{ERDöS \textit{et al.}}{1972}
 {ERDöS, P.; FRIED, E.; HAJNAL, A.; MILNER, E. Some remarks on simple
   tournaments.
 \textbf{Algebra Universalis}, v.~2, p. 238--245, 12 1972.}
+
+\bibitem[Farias \textit{et al.} 2026]{ALVARO2026}
+\abntrefinfo{Farias \textit{et al.}}{FARIAS \textit{et al.}}{2026}
+{FARIAS Álvaro; MAIA, A.~K.; COSTA, N. Espectro do número de intervalo na
+  convexidade p3*. In:  \textbf{Anais do XI Encontro de Teoria da
+  Computação}. Porto Alegre, RS, Brasil: SBC, 2026. p. 129--132.
+ISSN 2595-6116. Dispon{\'\i}vel em:
+  \url{https://sol.sbc.org.br/index.php/etc/article/view/43652}.}
 
 \bibitem[Gary \textit{et al.} 2003]{CHARTRAND2003}
 \abntrefinfo{Gary \textit{et al.}}{GARY \textit{et al.}}{2003}
@@ -66,12 +88,25 @@ Dispon{\'\i}vel em:
 {HARARY, F.; NIEMINEN, J. Convexity in graphs.
 \textbf{Journal of Differential Geometry}, v.~16, p. 185--190, 1981.}
 
+\bibitem[Lu 2007]{Lu2007}
+\abntrefinfo{Lu}{LU}{2007}
+{LU, C.-h. The geodetic numbers of graphs and digraphs.
+\textbf{Science in China Series A: Mathematics}, v.~50, n.~8, p. 1163--1172,
+  aug 2007.
+ISSN 1862-2763.
+Dispon{\'\i}vel em: \url{https://doi.org/10.1007/s11425-007-0048-x}.}
+
 \bibitem[Penso \textit{et al.} 2015]{PENSO201583}
 \abntrefinfo{Penso \textit{et al.}}{PENSO \textit{et al.}}{2015}
 {PENSO, L.~D.; PROTTI, F.; RAUTENBACH, D.; {dos Santos Souza}, U. Complexity
   analysis of p3-convexity problems on bounded-degree and planar graphs.
 \textbf{Theoretical Computer Science}, v.~607, p. 83--95, 2015.
 Algorithmic Aspects in Information and Management.}
+
+\bibitem[Vel 1993]{vandevel1993}
+\abntrefinfo{Vel}{VEL}{1993}
+{VEL, M. L. J. v.~d. \textbf{Theory of convex structures}. Amsterdam: Elsevier,
+  1993. v.~50.  (North-Holland Mathematical Library, v.~50).}
 
 \bibitem[West 2001]{west2001introduction}
 \abntrefinfo{West}{WEST}{2001}
