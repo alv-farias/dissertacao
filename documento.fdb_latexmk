@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex documento"] 1794249959 "documento.aux" "documento.bbl" "documento" 1794250083
+["bibtex documento"] 1794267962 "documento.aux" "documento.bbl" "documento" 1794267964
   "/usr/share/texlive/texmf-dist/bibtex/bib/abntex2/abntex2-options.bib" 1357081713 5396 4eb260dac60f150ae608d45252853090 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/abntex2/abntex2-alf.bst" 1543183680 60064 0819ac8568f9a482510a46e3a8a6f605 ""
   "3-pos-textuais/referencias.bib" 1794246780 6627 582821276c640e5b726c9b64a2f27ab1 ""
-  "documento.aux" 1794250083 21636 4d7737bd6b15cce55b319f2dbe12259e "pdflatex"
+  "documento.aux" 1794267964 22703 9af2202ef3c78149b97482aa68ab5f16 "pdflatex"
   (generated)
   "documento.bbl"
   "documento.blg"
-["makeindex documento.idx"] 1794249956 "documento.idx" "documento.ind" "documento" 1794250083
-  "documento.idx" 1794250082 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex documento.idx"] 1794262852 "documento.idx" "documento.ind" "documento" 1794267964
+  "documento.idx" 1794267963 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "documento.ilg"
   "documento.ind"
-["pdflatex"] 1794250082 "/home/alvaro/Documentos/github/dissertacao/documento.tex" "documento.pdf" "documento" 1794250083
+["pdflatex"] 1794267962 "/home/alvaro/Documentos/github/dissertacao/documento.tex" "documento.pdf" "documento" 1794267964
   "/etc/texmf/web2c/texmf.cnf" 1769647172 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/alvaro/Documentos/github/dissertacao/documento.tex" 1794235417 11621 aa775c4c3215ce5839048bbba5367ca6 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -371,20 +371,20 @@
   "1-pre-textuais/lista-de-simbolos.tex" 1794069946 2011 4a04d4508048a1d46bea2e7669a354ea ""
   "1-pre-textuais/resumo.tex" 1794069946 1673 429245044ea4278a7e3ebc873bf8fa0f ""
   "2-textuais/1-introducao.tex" 1794249958 16119 bb62b6c2aa2b96b1f18cc5edb4c54fe6 ""
-  "2-textuais/2-conceitos-basicos.tex" 1794245843 7148 3f5d8d7a4eef47c00940a6a6b351a9ae ""
-  "2-textuais/3-convexidade.tex" 1794069946 132 87755cd36ee6a8a39c346347284e30d0 ""
-  "2-textuais/4-espectro.tex" 1794250082 16374 c2958871992719fa6c06debabc1b2fe0 ""
-  "2-textuais/5-alg-poly.tex" 1794097955 4342 0379914127cc85734544a73f884f13c5 ""
-  "2-textuais/6-resultados-complexidade.tex" 1794098010 7119 2818f068e1610bfce06c45223e835af8 ""
+  "2-textuais/2-conceitos-basicos.tex" 1794267750 9165 a3c90a57b968c282b2cd4a589c33751e ""
+  "2-textuais/3-convexidade.tex" 1794262942 132 ea76bc11c50d42a9f7475b5d0d0796f1 ""
+  "2-textuais/4-espectro.tex" 1794262960 16392 1fc6a1c18c6163609c185e0173332dc2 ""
+  "2-textuais/5-alg-poly.tex" 1794262977 4362 f4ba2f8c656dc06c36256a1245adc11b ""
+  "2-textuais/6-resultados-complexidade.tex" 1794267960 7035 ea6273137085f216601f4c33f6b86133 ""
   "2-textuais/7-conclusao.tex" 1794069946 21 1f1591c2fb5dfc77ef8f1e98a71ccf52 ""
   "3-pos-textuais/glossario.tex" 1794069946 1325 bece85bf2ed1bad79d64e9c045f5b991 ""
-  "documento.aux" 1794250083 21636 4d7737bd6b15cce55b319f2dbe12259e "pdflatex"
-  "documento.bbl" 1794249959 5283 eb36c20330f6ce72d7f9667a98d38d48 "bibtex documento"
+  "documento.aux" 1794267964 22703 9af2202ef3c78149b97482aa68ab5f16 "pdflatex"
+  "documento.bbl" 1794267962 5283 eb36c20330f6ce72d7f9667a98d38d48 "bibtex documento"
   "documento.gls" 0 -1 0 ""
-  "documento.ind" 1794249956 0 d41d8cd98f00b204e9800998ecf8427e "makeindex documento.idx"
-  "documento.lof" 1794250083 757 3c78280844ccbf7c63566dd1b77c4be7 "pdflatex"
+  "documento.ind" 1794262852 0 d41d8cd98f00b204e9800998ecf8427e "makeindex documento.idx"
+  "documento.lof" 1794267964 757 e4bf34d086514f7887dbb8b695f62dba "pdflatex"
   "documento.tex" 1794235417 11621 aa775c4c3215ce5839048bbba5367ca6 ""
-  "documento.toc" 1794250083 2787 36d61d9088fa873e4d58ddfabe3d5cec "pdflatex"
+  "documento.toc" 1794267964 2881 7752a81dfe56c3e6607a82e5293b1107 "pdflatex"
   "lib/logo-ufc.PNG" 1794069946 225873 bd8744586e262fc284cb39e1fe099b01 ""
   "lib/preambulo.tex" 1794247443 8367 079ce7d186d8e55c0342a1fff61ebf71 ""
   "lib/ufctex.sty" 1794069946 43848 139016bd33ba2a9be4d2a4fb9cc57cbe ""

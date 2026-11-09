@@ -10,6 +10,8 @@ Seja $vu \in E(G)$, dizemos então que esses vértices são adjacentes. Denotamo
 
 Um \emph{caminho} em um grafo $G$, é uma sequência de vértices e arestas em que não há repetição de vértices. Um ($u,v$)-caminho é um caminho em que o primeiro vértice da sequência é $u$ e o último é $v$. Um \emph{ciclo} em um grafo $G$ é um caminho em que o primeiro vértice da sequência é igual ao último. Um grafo é dito \emph{conexo} se para todo par de vértice $u,v \in V(G)$ temos um ($u,v$)-caminho. Seja $H = (V_H,E_H)$, $H$ é um subgrafo de $G=(V,E)$ se $V_H \subseteq V$ e $E_H \subseteq E$. Uma \emph{componente} é um subgrafo maximal conexo de $G$. Uma \emph{ponte} é uma aresta $e \in E(G)$ tal que $G-e$ possui mais componentes que $G$.
 
+Se $G$ é um grafo simples e não contém ciclos, temos que $G$ é uma \emph{floresta}. Uma floresta conexa é chamada de \emph{árvore}. Seja $v \in V(G)$ e $G$ uma floresta (ou árvore), se $d(v) = 1$, dizemos que $v$ é uma folha.
+
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[scale=.8,
@@ -46,6 +48,8 @@ Um \emph{caminho} em um grafo $G$, é uma sequência de vértices e arestas em q
     \end{tikzpicture}
     \caption{Representação de um grafo simples.}\label{fig:peixe}
 \end{figure}
+
+Uma \emph{imersão} de um grafo $G$ no plano, é uma função que associa cada vértice de $G$ à um ponto em $\mathbb{R}^2$ e a cada aresta $uv \in E(G)$ a uma $u,v$-curva poligonal simples. A interseção de arestas no plano é um \emph{cruzamento}. Um grafo $G$ é dito \emph{planar} se admite uma imersão no plano $\mathbb{R}^2$ sem cruzamento de arestas.
 
 Um \emph{digrafo} (ou grafo direcionado) é uma dupla $D=(V,A)$, onde $V(D)$ é o conjunto de vértices do digrafo $D$ e $A(D)$ é o conjunto de arcos do digrafo $D$. Diferente das arestas em grafos simples, no contexto dos digrafos, um arco é um par ordenado de vértices. Seja $a=(u,v) \in A(D)$, dizemos que o vértice $u$ é a \emph{cauda} do arco $a$ e o vértice $v$ é \emph{cabeça} do arco $a$. Como temos que os arcos são pares ordenados de vértices, podemos dizer que no arco $(u,v)$, o vértice $v$ é \emph{sucessor} do vértice $u$ e que o vértice $u$ é \emph{predecessor} do vértice $v$. O grafo \emph{subjacente} de $D$ é o grafo sem as orientações dos arcos. 
 
@@ -90,4 +94,17 @@ Assim como nos grafos não orientados, o conceito de vizinhança se mantém, mas
 
 \section{Complexidade Computacional}
 
-Breve introdução de NP-completude
+A teoria da complexidade computacional estuda a classificação dos problemas computacionais. No caso, com essa classificação podemos entender quando os problemas são fáceis, ou seja, tem algoritmos eficientes para resolver e quando os problemas são dificeis. De maneira direta, um algoritmo eficiente é um algoritmo polinomial e é um dos principais objetivos na computação.
+
+\subsection{Classes de complexidade}
+
+Além dos resultados de convexidade mais estruturais, este trabalho apresenta resultados em complexidade computacional. Existem várias classes de complexidade, mas vamos focar em apenas duas: P e NP.
+
+A classe P é a classe dos problemas de \emph{decisão} que podem ser resolvidos por algoritmos polinomiais. Um \emph{verificador polinomial} é um algoritmo que dada uma instância de um problema e uma possível solução, checa se é uma solução \emph{sim} ou \emph{não}. A classe NP é basicamente a classe para os problemas de decisão que possuem um verificador polinomial para \emph{sim}.
+
+Os problemas NP-difíceis, são os problemas tão dificeis quantos os problemas em NP mas não necessariamente precisam estar em NP. Já os problemas NP-completos são aqueles que cumprem dois requisitos:
+
+\begin{enumerate}
+    \item Pertence a classe NP
+    \item Qualquer outro problema NP-completo pode ser reduzido ao mesmo em tempo polinomial (basicamente ser tão dificil quanto qualquer outro problema em NP)
+\end{enumerate}
