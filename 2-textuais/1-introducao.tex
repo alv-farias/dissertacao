@@ -1,7 +1,57 @@
 \chapter{Introdução}
 
-Apresentar convexidade, talvez o texto do ETC tenha algo para aproveitar
+A teoria de convexidade em grafos é uma área que busca adaptar os conceitos de topologia em um ambiente discreto. Naturalmente, o estudo da convexidade em grafos se estende aos grafos orientados. Dentre os vários modelos de convexidade estudados, as convexidades baseadas em caminhos, mais especificamente a convexidade \pd, onde um vértice é gerado por um conjunto se possui vizinhança de entrada e vizinhança de saída neste conjunto, introduzida em~\cite{ERDOS1972}, será o foco deste trabalho.
 
-Introduzir os problemas
+Para introduzir os conceitos básicos de convexidade em grafos, iremos revisitar os conceitos básicos da \emph{geometria convexa}. Para uma leitura um pouco mais detalhada, vale checar o capítulo inicial de~\cite{julio}. Seja $d$ um inteiro tal que $d \geq 2$ e $\mathbb{R}^d$ o espaço (euclidiano) $d$-dimensional, um determinado conjunto $S \subseteq \mathbb{R}^d$ é convexo se para qualquer segmento de reta entre dois pontos de $S$, o mesmo está contido em $S$.
 
-Falar sobre o que cada capítulo apresenta
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+    \begin{scope}
+        \draw[thick, fill=blue!15] (0,0) circle (1.5);
+        \fill (-0.9,0.8) circle (1.5pt) node[above left] {$A$};
+        \fill (1.0,-0.9) circle (1.5pt) node[below right] {$B$};
+        \draw[thick, red] (-0.9,0.8) -- (1.0,-0.9);
+        \node at (0,-2) {Forma convexa};
+    \end{scope}
+    \begin{scope}[xshift=5.5cm]
+        \path[fill=blue!15, draw=black, thick]
+        (30.93:1.5) arc (30.93:329.07:1.5)
+        arc (254.54:105.46:0.8) -- cycle;
+        \fill (1.15,0.85) circle (1.5pt) node[above right] {$A$};
+        \fill (1.15,-0.85) circle (1.5pt) node[below right] {$B$};
+        \draw[thick, red] (1.15,0.85) -- (1.15,-0.85);
+        \node at (0,-2) {Forma não convexa};
+    \end{scope}
+  
+\end{tikzpicture}
+\caption{Representação de uma forma convexa (esquerda) e uma forma não convexa (direita)}
+\end{figure}
+
+Seja $A$ um conjunto não vazio, uma convexidade $\mathcal{C}$, é uma família de subconjuntos de $A$, tal que:
+
+\begin{enumerate}
+    \item $\emptyset, A \in \mathcal{C}$
+    \item $\mathcal{C}$ é fechado sob interseção
+    \item A união infinita de conjuntos conexos aninhados, é convexa
+\end{enumerate}
+
+Observe que quando o conjunto $A$ é finito, como por exemplo o conjunto de vértices de um grafo, a propriedade $3$ pode ser descartada. Seja $C \in \mathcal{C}$, $C$ é um conjunto convexo.
+
+Definir envoltória convexa abstrata
+
+Definir vertice extremo
+
+Definir função de intervalo
+
+Definir as convexidades mais comuns, P3, P3* e Geodésica, talvez
+
+\section{Parâmetros de Convexidade}
+
+\section{Espectro}
+
+\section{Contribuições e Organização do texto}
+
+% Um dos principais parâmetros estudados na convexidade em grafos orientados é o \emph{número de intervalo}, introduzido na convexidade geodésica~\cite{HARARY199389}, denotado por $in(G)$. Como todos os resultados apresentados são em grafos orientados e especificamente na convexidade \pd, será utilizada a notação $\overrightarrow{in}(D)$, onde $D$ é um grafo orientado.
+
+\alv{Na convexidade \pd, a função de intervalo \infd{u,v} retorna todos os vértices de $D$ que pertencem a um $u,v$-caminho ou $v,u$-caminho direcionados que possuem exatamente 3 vértices~\cite{ERDOS1972}. Dado um subconjunto de vértices $S \subseteq V(D)$, se \infd{S} $= V(D)$, temos que $S$ é um \emph{conjunto de intervalo} de $D$. É possível obter vários conjuntos de intervalo e a cardinalidade mínima dentre todos os conjuntos de intervalo é o \emph{número de intervalo}.}
