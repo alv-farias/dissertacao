@@ -1,6 +1,6 @@
-\chapter{Conceitos Básicos}\label{cap:conceitosbasicos}
+\chapter{Conceitos Básicos}\label{2-conceitosbasicos}
 
-Nesta seção apresentamos conceitos básicos sobre \textit{grafos, digrafos e convexidade} para explorarmos o problema do \emph{Espectro em convexidade} e outros problemas relacionados. Todos os conceitos abordados aqui foram inspirados nos livros \textit{Introduction to graph Theory}~\cite{west2001introduction}, \textit{Digraphs: Theory, Algorithms and Applications}~\cite{bang2001} e \textit{Introduction to Graph Convexity: An Algorithmic Approach}~\cite{julio}.
+Nesta seção apresentamos conceitos básicos sobre \textit{grafos, digrafos e complexidade computacional} para explorarmos o problema do \emph{Espectro em convexidade} e outros problemas computacionais. Todos os conceitos abordados aqui foram inspirados nos livros \textit{Introduction to graph Theory}~\cite{west2001introduction}, \textit{Digraphs: Theory, Algorithms and Applications}~\cite{bang2001} e \textit{Introduction to Graph Convexity: An Algorithmic Approach}~\cite{julio}.
 
 \section{Grafos e Digrafos}
 
@@ -98,13 +98,13 @@ A teoria da complexidade computacional estuda a classificação dos problemas co
 
 \subsection{Classes de complexidade}
 
-Além dos resultados de convexidade mais estruturais, este trabalho apresenta resultados em complexidade computacional. Existem várias classes de complexidade, mas vamos focar em apenas duas: P e NP.
+Além dos resultados de convexidade mais estruturais, este trabalho apresenta resultados em complexidade computacional. Existem várias classes de complexidade, mas vamos focar em apenas duas: \poli~e~\np.
 
-A classe P é a classe dos problemas de \emph{decisão} que podem ser resolvidos por algoritmos polinomiais. Um \emph{verificador polinomial} é um algoritmo que dada uma instância de um problema e uma possível solução, checa se é uma solução \emph{sim} ou \emph{não}. A classe NP é basicamente a classe para os problemas de decisão que possuem um verificador polinomial para \emph{sim}.
+A classe~\poli~é a classe dos problemas de \emph{decisão} que podem ser resolvidos por algoritmos polinomiais. Um \emph{verificador polinomial} é um algoritmo que dada uma instância de um problema e uma possível solução, checa se é uma solução \emph{sim} ou \emph{não}. A classe NP é basicamente a classe para os problemas de decisão que possuem um verificador polinomial para \emph{sim}.
 
-Os problemas NP-difíceis, são os problemas tão dificeis quantos os problemas em NP mas não necessariamente precisam estar em NP. Já os problemas NP-completos são aqueles que cumprem dois requisitos:
+Os problemas \nph, são os problemas tão dificeis quantos os problemas em NP mas não necessariamente precisam estar em NP. Já os problemas NP-completos são aqueles que cumprem dois requisitos:
 
 \begin{enumerate}
-    \item Pertence a classe NP
-    \item Qualquer outro problema NP-completo pode ser reduzido ao mesmo em tempo polinomial (basicamente ser tão dificil quanto qualquer outro problema em NP)
+    \item Pertence a classe~\np.
+    \item Qualquer outro problema~\npc~pode ser reduzido ao mesmo em tempo polinomial (basicamente ser tão dificil quanto qualquer outro problema em NP)
 \end{enumerate}

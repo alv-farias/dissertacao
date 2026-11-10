@@ -1,0 +1,280 @@
+\chapter{Resultados de Complexidade em Grafos planares}\label{5-complexidade}
+
+\section{NP-completude para grafos planares orientados}
+
+Em~\cite{CENTENO200911}, foi provado que no caso não orientado, decidir se o número de intervalo (\inum{P_3}) é no máximo $k$ é um problema NP-completo. Posteriormente,\cite{PENSO201583} mostraram que o problema continua NP-completo mesmo em grafos planares com grau máximo 3. Além disso, em\cite{PENSO201583}, é apresentado o problema \sam.
+
+\vspace{5pt}
+
+\problemDef{\sam}{Um conjunto de cláusulas $F = \{C_1, C_2, \ldots, C_m\}$, um conjunto finito de variáveis booleanas $X = \{x_1, x_2, \ldots, x_n\}$, onde cada cláusula contém no máximo 3 literais, cada variável aparece no máximo 3 vezes, cada literal ocorre no máximo 2 vezes e o grafo bipartido $H_F = (V, E)$ tal que $V = \{w_{c_1}, w_{c_2}, \ldots, w_{c_m}\} \cup \{v_{x_1}, v_{x_2}, \ldots, v_{x_n}\}$ e $E$ contém exatamente os pares $(w_{c_i}, v_{x_j})$ tal que $x_j$ ou $\overline{x_j}$ pertencem a cláusula $C_i$, é planar}{Existe alguma valoração de valores verdadeiros as variáveis de $X$ que satisfaz $F$?}{}{psam3}
+
+\begin{theorem}[\cite{PENSO201583}]
+    \sam~é~\npc.
+\end{theorem}
+
+Muitos conceitos de convexidade em grafos se estendem aos grafos orientados. Tendo como base o resultado de \cite{PENSO201583} faremos uma redução do problema \sam para o problema do \ind.
+
+\problemDef{\ind}{Um grafo planar orientado D e um inteiro positivo \emph{k}}{\inumd{P_3} $\leq k$?}{}{gpinp3}
+
+\begin{theorem}
+    \ind~é~\npc.\label{teo-intervalplanar}
+\begin{proof}
+    Essa demonstração é similar ao resultado não direcionado apresentado em \cite{PENSO201583}. Podemos ver que \ind está em \np tendo um subconjunto $S$ de vértices de um grafo direcionado $D$ como certificado. Neste caso, basta verificar o tamanho do subconjunto $S$ e para cada $v \in V(D) \backslash S$, verificar se existe pelo menos um vértice $v_1 \in N^+(v)$ e pelo menos um vértice $v_2 \in N^-(v)$ que estão em $S$.
+
+    Para provar a \npct, faremos uma redução do problema \sam~para \ind. Seja $F$ uma instância de \sam, construíremos um grafo orientado $D$ da seguinte forma:
+
+    \begin{itemize}
+        \item Para cada variável $x_i$, criamos em $D$ um \emph{gadget} $d_{x_i}$ composta pelo ciclo direcionado $f^1_{x_i}, t^1_{x_i}, a^1_{x_i}, a^2_{x_i},f^2_{x_i}, t^2_{x_i}, a^3_{x_i}, a^4_{x_i}$, ver figura~\ref{fig:gadgetVarInt};
+
+        \item Para cada cláusula com no máximo 2 literais, criamos em $D$ um \emph{gadget} $d_{c_j}$ composta pelos vértices $c^1_j$ e $c^2_j$ e o arco $(c^2_j, c^1_j)$, ver figura~\ref{gadgetsInt};
+        
+        \item Para cada cláusula com exatamente 3 literais, criamos em $D$ um \emph{gadget} $d_{x_i}$ composta pelos vértices $c^1_j, c^2_j, c^3_j, l^1_j, l^2_j$ e os arcos ($c^2_j, c^1_j$), ($c^1_j, c^3_j$), ($c^3_j, l^2_j$) e ($c^1_j, l^1_j$), ver figura~\ref{gadgetsInt}.
+
+    \end{itemize}
+
+    Considerando a representação plana do grafo $H_F$ como um \emph{template} para o grafo orientado $D$, adicionamos arcos que conectam os \emph{gadgets} da seguinte forma: 
+
+    \begin{itemize}
+        \item Se a variável $x_i$ aparece positiva (respectivamente, negativa) na cláusula $C_j$, adicionamos o arco ($t^a_{x_i}, c^b_j$) (respectivamente, ($f^a_{x_i}, c^b_j$)), onde $a \in \{1,2\}$ e $b \in \{2,3\}$.
+        \item Se a cláusula contém no máximo 2 literais, o único vértice conector é o vértice $c^2_j$. Por outro lado, se a cláusula tem exatamente 3 literais, os conectores são apenas $c^2_j$ e $c^3_j$. Neste caso, $c^2_j$ terá 2 vizinhos de entrada e $c^3_j$ terá exatamente 1 vizinho de entrada.
+        
+        \alv{a única forma de garantir isso é tendo grau de entrada no máximo 2?}
+
+        \item Neste caso, o grafo orientado $D$ tem grau de entrada máximo igual a 2
+    \end{itemize}
+
+Vamos demonstrar que dada uma instância $F$ de \sam, onde $n$ é o número de variáveis, $m_1$ é o número de cláusulas com no máximo 2 literais e $m_2$ é o número de cláusulas com exatamente 3 literais, $F$ é satisfatível se e somente se o grafo orientado $D$ obtido na construção acima tem um conjunto de intervalo \pd de tamanho $k = 4n + m_1 + 3m_2$.
+
+Seja $F$ uma fórmula \sam~e $A$ uma atribuição de valores verdadeiros para $F$. Construímos um conjunto de intervalo $S_A$ da seguinte forma:
+
+\begin{enumerate}
+    \item Todos os vértices extremos são adicionados a $S_A$
+    \item Se $x_i = verdadeiro$ em $A$, adicionamos os seguintes vértices a $S_A$: $t^1_{x_i}, t^2_{x_i}, a^2_{x_i}, a^4_{x_i}$
+    \item Se $x_i = falso$ em $A$, adicionamos os seguintes vértices a $S_A$: $f^1_{x_i}, f^2_{x_i}, a^1_{x_i}, a^3_{x_i}$
+    \item Para cada cláusula com exatamente 3 literais, seja $v \neq c^1_j$, se o vértice $v \in N^-(c^3_j)$ está em $S_A$ , então adicionamos o vértice $c^2_j$ a $S_A$, caso contrário, adicionamos o vértice $c^1_j$.
+    \item Como $A$ é uma atribuição de valores verdade, cada cláusula deve ser satisfeita, com isso temos que cada \emph{gadget} $d_{c_j}$ de $D$ deve ter pelo menos um vizinho no conjunto de intervalo $S_A$ que estão em algum $d_{x_i}$. Portanto, $S_A$ é um conjunto de intervalo tal que $|S_A| = 4n+m_1+3m_2$.
+\end{enumerate}
+
+Por outro lado, seja $S_A \subseteq V(D)$ um conjunto de intervalo tal que $|S_A| = 4n+m_1+3m_2 = k$, obtemos uma atribuição de valores $A$ da seguinte forma:
+\begin{enumerate}
+    \item Todo vértice extremo está em $S_A$ \alv{usar a referencia para garantir a escrita dessa forma}
+    \item Pelo menos um vértice do \emph{gadget} $d_{c_j}$ quando a cláusula tem até 2 literais deve estar em $S_A$ e pelo menos 3 vértices do \emph{gadget} $d_{c_j}$ quando a cláusula tem exatamente 3 literais devem estar em $S_A$. Como $|S_A| = k$, temos que exatamente 4 vértices do \emph{gadget} $d_{x_i}$ devem estar em $S_A$. Pela construção do digrafo $D$, vemos que as únicas configurações possíveis são: Adicionar os vértices $\{t^1_{x_i},t^2_{x_i},a^2_{x_i},a^4_{x_i}\}$ ao conjunto $S_A$ ou adicionar os vértices $\{f^1_{x_i},f^2_{x_i},a^1_{x_i},a^3_{x_i}\}$.
+    \item Com isso, $x_i = verdadeiro$ se e somente se $\{t^1_{x_i},t^2_{x_i},a^2_{x_i},a^4_{x_i}\} \in S_A$. Desta forma, temos que cada \emph{gadget} $d_{c_j}$ deve ter um vizinho em $S_A$, se não, $S_A$ não seria um conjunto de intervalo do digrafo $D$ ou $|S_A| > k$, já que mais vértices em cada \emph{gadget} de cláusula estariam em $S_A$. Portanto, se $D$ tem um conjunto de intervalo de tamanho $4n+m_1+3m_2$, então, a fórmula $F$ é satisfeita.
+\end{enumerate}
+
+\end{proof}
+\end{theorem}
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+\begin{tikzpicture}[
+  wnode/.style={circle, draw, fill=white, minimum size=7mm, inner sep=0pt},
+  bnode/.style={circle, draw, fill=black, minimum size=7mm, inner sep=0pt},
+  arc/.style={-{Stealth[length=2.5mm]}, thick, shorten >=1pt, shorten <=1pt}
+]
+    \node[bnode, label=left:{$c_i^2$}](c2) at (0,2){};
+    \node[bnode, label=left:{$c_i^1$}](c1) at (1,0.8){};
+    \node[bnode, label=right:{$l_i^1$}](l1) at (1,-0.8){};
+    \node[bnode, label=right:{$c_i^3$}](c3) at (2,2){};
+    \node[bnode, label=right:{$l_i^2$}](l2) at (3,0.8){};
+
+
+    \draw[arc] (c2) -- (c1);
+    \draw[arc] (c1) -- (c3);
+    \draw[arc] (c3) -- (l2);
+    \draw[arc] (c1) -- (l1);
+    
+\end{tikzpicture}
+\caption{Gadget de cláusula com exatamente 3 literais}\label{fig:gadgetInt-a}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[
+    wnode/.style={circle, draw, fill=white, minimum size=7mm, inner sep=0pt},
+    bnode/.style={circle, draw, fill=black, minimum size=7mm, inner sep=0pt},
+    arc/.style={-{Stealth[length=2.5mm]}, thick, shorten >=1pt, shorten <=1pt}
+    ]
+        \node[bnode, label=left:{$c_i^2$}](c2) at (0,2){};
+        \node[bnode, label=left:{$c_i^1$}](c1) at (0,-0.8){};
+
+        \draw[arc] (c2) -- (c1);
+    \end{tikzpicture}
+    \caption{Gadget de cláusula com até 2 literais}\label{fig:gadgetInt-b}
+\end{subfigure}\caption{Gadgets $d_{c_i}$ de cláusulas}\label{gadgetsInt}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+    wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
+    bnode/.style={circle, draw, fill=black, minimum size=5mm, inner sep=0pt},
+    arc/.style={-{Stealth[length=2.5mm]}, thick, shorten >=1pt, shorten <=1pt}
+    ]
+
+    \node[bnode, label=left:{$t_{x_i}^1$}](t1) at (0,0){};
+    \node[bnode, label=above:{$f_{x_i}^1$}](f1) at (1,1.5){};
+    \node[bnode, label=above:{$a_{x_i}^4$}](a4) at (2.5,1.5){};
+    \node[bnode, label=above:{$a_{x_i}^3$}](a3) at (4,1.5){};
+    \node[bnode, label=right:{$t_{x_i}^2$}](t2) at (5,0){};
+    \node[bnode, label=below:{$f_{x_i}^2$}](f2) at (4,-1.5){};
+    \node[bnode, label=below:{$a_{x_i}^2$}](a2) at (2.5,-1.5){};
+    \node[bnode, label=below:{$a_{x_i}^1$}](a1) at (1,-1.5){};
+
+    \draw[arc] (t1) -- (f1);
+    \draw[arc] (f1) -- (a4);
+    \draw[arc] (a4) -- (a3);
+    \draw[arc] (a3) -- (t2);
+    \draw[arc] (t2) -- (f2);
+    \draw[arc] (f2) -- (a2);
+    \draw[arc] (a2) -- (a1);
+    \draw[arc] (a1) -- (t1);
+    \end{tikzpicture}
+    \caption{Gadget $d_{x_i}$ das variáveis}\label{fig:gadgetVarInt}
+\end{figure}
+
+
+
+Uma ilustração de um exemplo de construção para a prova do teorema~\ref{teo-intervalplanar} é visto na figura~\ref{reducaoInt}. A fórmula lógica do exemplo é: $F = (x_1)\land (\overline{x_1} \lor x_2 \lor x_3) \land (x_2) \land (\overline{x_2} \lor \overline{x_3} \lor x_1)$. Sendo a atribuição $A = \{x_1 = verdadeiro, x_2 = verdadeiro, x_3 = falso\}$, é possível obter um conjunto de intervalo $S \subseteq V(D)$. Os vértices pretos são os vértices selecionados para o conjunto de intervalo e os vértices brancos são os vértices gerados.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+    wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
+    bnode/.style={circle, draw, fill=black, minimum size=5mm, inner sep=0pt},
+    arc/.style={-{Stealth[length=2.5mm]}, thick, shorten >=1pt, shorten <=1pt},
+    scale=0.6
+    ]
+
+    \begin{scope}[name prefix=c1-]
+        \node[bnode, label=right:{$t_{x_1}^1$}](t1) at (0,0){};
+        \node[wnode, label=above:{$f_{x_1}^1$}](f1) at (1,1.5){};
+        \node[bnode, label=above:{$a_{x_1}^4$}](a4) at (2.5,1.5){};
+        \node[wnode, label=above:{$a_{x_1}^3$}](a3) at (4,1.5){};
+        \node[bnode, label=left:{$t_{x_1}^2$}](t2) at (5,0){};
+        \node[wnode, label=below:{$f_{x_1}^2$}](f2) at (4,-1.5){};
+        \node[bnode, label=below:{$a_{x_1}^2$}](a2) at (2.5,-1.5){};
+        \node[wnode, label=below:{$a_{x_1}^1$}](a1) at (1,-1.5){};
+
+        \draw[arc] (t1) -- (f1);
+        \draw[arc] (f1) -- (a4);
+        \draw[arc] (a4) -- (a3);
+        \draw[arc] (a3) -- (t2);
+        \draw[arc] (t2) -- (f2);
+        \draw[arc] (f2) -- (a2);
+        \draw[arc] (a2) -- (a1);
+        \draw[arc] (a1) -- (t1);
+    \end{scope}
+
+    \begin{scope}[xshift=9.0cm, name prefix=c2-]
+        \node[bnode, label=right:{$t_{x_2}^1$}](t1) at (0,0){};
+        \node[wnode, label=above:{$f_{x_2}^1$}](f1) at (1,1.5){};
+        \node[bnode, label=above:{$a_{x_2}^4$}](a4) at (2.5,1.5){};
+        \node[wnode, label=above:{$a_{x_2}^3$}](a3) at (4,1.5){};
+        \node[bnode, label=left:{$t_{x_2}^2$}](t2) at (5,0){};
+        \node[wnode, label=below:{$f_{x_2}^2$}](f2) at (4,-1.5){};
+        \node[bnode, label=below:{$a_{x_2}^2$}](a2) at (2.5,-1.5){};
+        \node[wnode, label=below:{$a_{x_2}^1$}](a1) at (1,-1.5){};
+
+        \draw[arc] (t1) -- (f1);
+        \draw[arc] (f1) -- (a4);
+        \draw[arc] (a4) -- (a3);
+        \draw[arc] (a3) -- (t2);
+        \draw[arc] (t2) -- (f2);
+        \draw[arc] (f2) -- (a2);
+        \draw[arc] (a2) -- (a1);
+        \draw[arc] (a1) -- (t1);
+    \end{scope}
+
+    \begin{scope}[xshift=18.0cm, name prefix=c3-]
+        \node[bnode, label=right:{$t_{x_3}^1$}](t1) at (0,0){};
+        \node[wnode, label=above:{$f_{x_3}^1$}](f1) at (1,1.5){};
+        \node[bnode, label=above:{$a_{x_3}^4$}](a4) at (2.5,1.5){};
+        \node[wnode, label=above:{$a_{x_3}^3$}](a3) at (4,1.5){};
+        \node[bnode, label=left:{$t_{x_3}^2$}](t2) at (5,0){};
+        \node[wnode, label=below:{$f_{x_3}^2$}](f2) at (4,-1.5){};
+        \node[bnode, label=below:{$a_{x_3}^2$}](a2) at (2.5,-1.5){};
+        \node[wnode, label=below:{$a_{x_3}^1$}](a1) at (1,-1.5){};
+
+        \draw[arc] (t1) -- (f1);
+        \draw[arc] (f1) -- (a4);
+        \draw[arc] (a4) -- (a3);
+        \draw[arc] (a3) -- (t2);
+        \draw[arc] (t2) -- (f2);
+        \draw[arc] (f2) -- (a2);
+        \draw[arc] (a2) -- (a1);
+        \draw[arc] (a1) -- (t1);
+    \end{scope}
+    
+    \begin{scope}[xshift=2.5cm, yshift=-2cm]
+        \begin{scope}[yshift=-8cm, name prefix=cl1-]
+            \node[wnode, label=left:{$c_1^2$}](c2) at (0,2){};
+            \node[bnode, label=left:{$c_1^1$}](c1) at (0,-0.8){};
+
+            \draw[arc] (c2) -- (c1);
+        \end{scope}
+        
+        \begin{scope}[yshift=-8cm, xshift=5.0cm, name prefix=cl2-]
+            \node[bnode, label=left:{$c_2^2$}](c2) at (0,2){};
+            \node[wnode, label=left:{$c_2^1$}](c1) at (1,0.8){};
+            \node[bnode, label=right:{$l_2^1$}](l1) at (1,-0.8){};
+            \node[wnode, label=right:{$c_2^3$}](c3) at (2,2){};
+            \node[bnode, label=right:{$l_2^2$}](l2) at (3,0.8){};
+
+
+            \draw[arc] (c2) -- (c1);
+            \draw[arc] (c1) -- (c3);
+            \draw[arc] (c3) -- (l2);
+            \draw[arc] (c1) -- (l1);
+        \end{scope}
+
+        \begin{scope}[yshift=-8cm, xshift=12.5cm, name prefix=cl3-]
+            \node[wnode, label=left:{$c_3^2$}](c2) at (0,2){};
+            \node[bnode, label=left:{$c_3^1$}](c1) at (0,-0.8){};
+
+            \draw[arc] (c2) -- (c1);
+        \end{scope}
+
+        \begin{scope}[yshift=-8cm, xshift=16.5cm, name prefix=cl4-]
+            \node[bnode, label=left:{$c_4^2$}](c2) at (0,2){};
+            \node[bnode, label=right:{$c_4^1$}](c1) at (1,0.8){};
+            \node[bnode, label=right:{$l_4^1$}](l1) at (1,-0.8){};
+            \node[bnode, label=right:{$c_4^3$}](c3) at (2,2){};
+            \node[bnode, label=right:{$l_4^2$}](l2) at (3,0.8){};
+
+
+            \draw[arc] (c2) -- (c1);
+            \draw[arc] (c1) -- (c3);
+            \draw[arc] (c3) -- (l2);
+            \draw[arc] (c1) -- (l1);
+        \end{scope}
+    \end{scope}
+
+    \draw[arc] (c1-t1) to[bend right=20] (cl1-c2.north);
+    \draw[arc] (c1-f2) to (cl2-c2.north);
+    \draw[arc, rounded corners=8mm] (c1-f1.west) -- ++(-2.5, 0) |- ($(cl1-c1.south)+(0,-0.5)$) -| (cl4-c2.south);
+    \draw[arc, rounded corners=8mm] (c3-t1.north) -- ++(0,4) -| (cl2-c2.north);
+    \draw[arc] plot [smooth] coordinates{(c2-t2.north) ($(c2-a3)+(0,2)$) ($(c2-a2)+(0,5.5)$) ($(c2-f1)+(-1.5,1.5)$) ($(c2-t1)+(-1,1.7)$) ($(c2-t1)+(-1,1.5)$) ($(c2-a1)+(-2,1)$) (cl2-c3.north)};
+    \draw[arc] (c3-t2) to[bend left=20] (cl4-c3);
+    \draw[arc] plot [smooth] coordinates{(c2-t1.west) ($(c2-a1)+(-0.3,-2)$) (cl3-c2.north)};
+    \end{tikzpicture}
+    \caption{Exemplo da construção do teorema\ref{teo-intervalplanar}}\label{reducaoInt}
+\end{figure}
+
+Além do número de intervalo, outro parâmetro bastante estudado é o número de envoltória que também se estende aos grafos orientados. Tendo com base o resultado de~\cite{PENSO201583} faremos uma redução do problema \sam~para o problema \hnd~em grafos planares.
+
+
+
+\problemDef{\hnd}{Um grafo planar orientado D e um inteiro positivo \emph{k}}{\hnumd{P_3} $\leq k$?}{}{gphnp3}
+
+\begin{theorem}
+    \hnd é \npc
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
