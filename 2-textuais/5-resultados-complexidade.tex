@@ -258,11 +258,11 @@ Uma ilustração de um exemplo de construção para a prova do teorema~\ref{teo-
     \draw[arc] (c1-f2) to (cl2-c2.north);
     \draw[arc, rounded corners=8mm] (c1-f1.west) -- ++(-2.5, 0) |- ($(cl1-c1.south)+(0,-0.5)$) -| (cl4-c2.south);
     \draw[arc, rounded corners=8mm] (c3-t1.north) -- ++(0,4) -| (cl2-c2.north);
-    \draw[arc] plot [smooth] coordinates{(c2-t2.north) ($(c2-a3)+(0,2)$) ($(c2-a2)+(0,5.5)$) ($(c2-f1)+(-1.5,1.5)$) ($(c2-t1)+(-1,1.7)$) ($(c2-t1)+(-1,1.5)$) ($(c2-a1)+(-2,1)$) (cl2-c3.north)};
+    \draw[arc] plot [smooth] coordinates{(c2-t2.north) ($(c2-a3)+(0,2)$) ($(c2-a2)+(0,5.5)$) ($(c2-f1)+(-1.5,1.5)$) ($(c2-t1)+(-1,1.5)$) ($(c2-a1)+(-2,1)$) (cl2-c3.north)};
     \draw[arc] (c3-t2) to[bend left=20] (cl4-c3);
     \draw[arc] plot [smooth] coordinates{(c2-t1.west) ($(c2-a1)+(-0.3,-2)$) (cl3-c2.north)};
     \end{tikzpicture}
-    \caption{Exemplo da construção do teorema\ref{teo-intervalplanar}}\label{reducaoInt}
+    \caption{Exemplo da construção do teorema~\ref{teo-intervalplanar}}\label{reducaoInt}
 \end{figure}
 
 Além do número de intervalo, outro parâmetro bastante estudado é o número de envoltória que também se estende aos grafos orientados. Tendo com base o resultado de~\cite{PENSO201583} faremos uma redução do problema \sam~para o problema \hnd~em grafos planares.
