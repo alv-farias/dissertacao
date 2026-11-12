@@ -94,17 +94,12 @@ Assim como nos grafos não orientados, o conceito de vizinhança se mantém, mas
 
 \section{Complexidade Computacional}
 
-A teoria da complexidade computacional estuda a classificação dos problemas computacionais. No caso, com essa classificação podemos entender quando os problemas são fáceis, ou seja, tem algoritmos eficientes para resolver e quando os problemas são dificeis. De maneira direta, um algoritmo eficiente é um algoritmo polinomial e é um dos principais objetivos na computação.
+Além dos resultados de convexidade mais estruturais, este trabalho apresenta resultados em complexidade computacional. Existem várias classes de complexidade, mas vamos focar em apenas duas: \poli~e~\np. Para melhor entendimento desses conceitos, recomenda-se a leitura de~\cite{garey1990} e de~\cite{cormen2012algoritmos}.
+
+Em~\cite{cormen2012algoritmos}, vemos que um \emph{algoritmo} é qualquer procedimento computacional bem definido que toma algum conjunto de valores como \emph{entrada} e produz um conjunto de valores como saída. Um \emph{problema computacional} é um problema que relaciona um conjunto de entrada com um conjunto de saída. Portanto, um algoritmo é um conjunto de etapas para resolver um problema computacional. Um \emph{problema de decisão} é uma pergunta com resposta \emph{sim} ou \emph{não} sobre algum parâmetro de entrada de um problema computacional.
 
 \subsection{Classes de complexidade}
 
-Além dos resultados de convexidade mais estruturais, este trabalho apresenta resultados em complexidade computacional. Existem várias classes de complexidade, mas vamos focar em apenas duas: \poli~e~\np.
+A classe~\poli~é definida como o conjunto de todos os problemas de decisão que podem ser resolvidos por algoritmos polinomiais. Um \emph{verificador polinomial} é um algoritmo que dada uma instância de um problema em que a resposta é sim, e um \emph{certificado} de tamanho polinomial, checa se a resposta para a instância do problema realmente é \emph{sim}, ou seja, o verificador retorna \emph{sim} se e somente se a resposta da instância é \emph{sim}. A classe NP é basicamente a classe para os problemas de decisão que possuem um verificador polinomial para \emph{sim}. Quando falarmos nesse texto de algum problema computacional, entende-se que se trata de um problema de decisão.
 
-A classe~\poli~é a classe dos problemas de \emph{decisão} que podem ser resolvidos por algoritmos polinomiais. Um \emph{verificador polinomial} é um algoritmo que dada uma instância de um problema e uma possível solução, checa se é uma solução \emph{sim} ou \emph{não}. A classe NP é basicamente a classe para os problemas de decisão que possuem um verificador polinomial para \emph{sim}.
-
-Os problemas \nph, são os problemas tão dificeis quantos os problemas em NP mas não necessariamente precisam estar em NP. Já os problemas NP-completos são aqueles que cumprem dois requisitos:
-
-\begin{enumerate}
-    \item Pertence a classe~\np.
-    \item Qualquer outro problema~\npc~pode ser reduzido ao mesmo em tempo polinomial (basicamente ser tão dificil quanto qualquer outro problema em NP)
-\end{enumerate}
+Sejam $A$ e $B$ dois problemas distintos. Uma \emph{redução polinomial} entre problemas é um algoritmo de tempo polinomial $f$ que transforma uma instância $I$ de $A$ em uma instância $f(I)$ de $B$. Neste caso, a instância $I$ de $A$ tem resposta \emph{sim}, se e somente se, a instância $f(I)$ de $B$ tem resposta \emph{sim}. Dizemos que um problema $A$ é~\npd, se todo problema da classe~\np, pode ser reduzido em tempo polinomial ao problema $A$. Por fim, dizemos que um problema $A$ é~\npc~se $A$ está em~\np~e também é um problema~\npd. Observe que dessa forma, todo problema~\npc~pode ser reduzido em tempo polinomial para outro problema~\npc.

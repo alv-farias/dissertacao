@@ -19,12 +19,12 @@ Muitos conceitos de convexidade em grafos se estendem aos grafos orientados. Ten
 \begin{theorem}
     \ind~é~\npc.\label{teo-intervalplanar}
 \begin{proof}
-    Essa demonstração é similar ao resultado não direcionado apresentado em \cite{PENSO201583}. Podemos ver que \ind está em \np tendo um subconjunto $S$ de vértices de um grafo direcionado $D$ como certificado. Neste caso, basta verificar o tamanho do subconjunto $S$ e para cada $v \in V(D) \backslash S$, verificar se existe pelo menos um vértice $v_1 \in N^+(v)$ e pelo menos um vértice $v_2 \in N^-(v)$ que estão em $S$.
+    Podemos ver que \ind~está em \np~tendo um subconjunto $S$ de vértices de um grafo orientado $D$ como certificado. Neste caso, basta verificar o tamanho do subconjunto $S$ e para cada $v \in V(D) \backslash S$, verificar se existe pelo menos um vértice $v_1 \in N^+(v)$ e pelo menos um vértice $v_2 \in N^-(v)$ que estão em $S$.
 
     Para provar a \npct, faremos uma redução do problema \sam~para \ind. Seja $F$ uma instância de \sam, construíremos um grafo orientado $D$ da seguinte forma:
 
     \begin{itemize}
-        \item Para cada variável $x_i$, criamos em $D$ um \emph{gadget} $d_{x_i}$ composta pelo ciclo direcionado $f^1_{x_i}, t^1_{x_i}, a^1_{x_i}, a^2_{x_i},f^2_{x_i}, t^2_{x_i}, a^3_{x_i}, a^4_{x_i}$, ver figura~\ref{fig:gadgetVarInt};
+        \item Para cada variável $x_i$, criamos em $D$ um \emph{gadget} $d_{x_i}$ composta pelo ciclo orientado $f^1_{x_i},t^1_{x_i},a^1_{x_i},$ $a^2_{x_i},f^2_{x_i},t^2_{x_i},a^3_{x_i},a^4_{x_i}$, ver figura~\ref{fig:gadgetVarInt};
 
         \item Para cada cláusula com no máximo 2 literais, criamos em $D$ um \emph{gadget} $d_{c_j}$ composta pelos vértices $c^1_j$ e $c^2_j$ e o arco $(c^2_j, c^1_j)$, ver figura~\ref{gadgetsInt};
         
@@ -37,8 +37,6 @@ Muitos conceitos de convexidade em grafos se estendem aos grafos orientados. Ten
     \begin{itemize}
         \item Se a variável $x_i$ aparece positiva (respectivamente, negativa) na cláusula $C_j$, adicionamos o arco ($t^a_{x_i}, c^b_j$) (respectivamente, ($f^a_{x_i}, c^b_j$)), onde $a \in \{1,2\}$ e $b \in \{2,3\}$.
         \item Se a cláusula contém no máximo 2 literais, o único vértice conector é o vértice $c^2_j$. Por outro lado, se a cláusula tem exatamente 3 literais, os conectores são apenas $c^2_j$ e $c^3_j$. Neste caso, $c^2_j$ terá 2 vizinhos de entrada e $c^3_j$ terá exatamente 1 vizinho de entrada.
-        
-        \alv{a única forma de garantir isso é tendo grau de entrada no máximo 2?}
 
         \item Neste caso, o grafo orientado $D$ tem grau de entrada máximo igual a 2
     \end{itemize}
@@ -57,7 +55,7 @@ Seja $F$ uma fórmula \sam~e $A$ uma atribuição de valores verdadeiros para $F
 
 Por outro lado, seja $S_A \subseteq V(D)$ um conjunto de intervalo tal que $|S_A| = 4n+m_1+3m_2 = k$, obtemos uma atribuição de valores $A$ da seguinte forma:
 \begin{enumerate}
-    \item Todo vértice extremo está em $S_A$ \alv{usar a referencia para garantir a escrita dessa forma}
+    \item Todo vértice extremo está em $S_A$
     \item Pelo menos um vértice do \emph{gadget} $d_{c_j}$ quando a cláusula tem até 2 literais deve estar em $S_A$ e pelo menos 3 vértices do \emph{gadget} $d_{c_j}$ quando a cláusula tem exatamente 3 literais devem estar em $S_A$. Como $|S_A| = k$, temos que exatamente 4 vértices do \emph{gadget} $d_{x_i}$ devem estar em $S_A$. Pela construção do digrafo $D$, vemos que as únicas configurações possíveis são: Adicionar os vértices $\{t^1_{x_i},t^2_{x_i},a^2_{x_i},a^4_{x_i}\}$ ao conjunto $S_A$ ou adicionar os vértices $\{f^1_{x_i},f^2_{x_i},a^1_{x_i},a^3_{x_i}\}$.
     \item Com isso, $x_i = verdadeiro$ se e somente se $\{t^1_{x_i},t^2_{x_i},a^2_{x_i},a^4_{x_i}\} \in S_A$. Desta forma, temos que cada \emph{gadget} $d_{c_j}$ deve ter um vizinho em $S_A$, se não, $S_A$ não seria um conjunto de intervalo do digrafo $D$ ou $|S_A| > k$, já que mais vértices em cada \emph{gadget} de cláusula estariam em $S_A$. Portanto, se $D$ tem um conjunto de intervalo de tamanho $4n+m_1+3m_2$, então, a fórmula $F$ é satisfeita.
 \end{enumerate}
@@ -106,8 +104,6 @@ Por outro lado, seja $S_A \subseteq V(D)$ um conjunto de intervalo tal que $|S_A
 \end{subfigure}\caption{Gadgets $d_{c_i}$ de cláusulas}\label{gadgetsInt}
 \end{figure}
 
-
-
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[
@@ -141,7 +137,7 @@ Por outro lado, seja $S_A \subseteq V(D)$ um conjunto de intervalo tal que $|S_A
 
 Uma ilustração de um exemplo de construção para a prova do teorema~\ref{teo-intervalplanar} é visto na figura~\ref{reducaoInt}. A fórmula lógica do exemplo é: $F = (x_1)\land (\overline{x_1} \lor x_2 \lor x_3) \land (x_2) \land (\overline{x_2} \lor \overline{x_3} \lor x_1)$. Sendo a atribuição $A = \{x_1 = verdadeiro, x_2 = verdadeiro, x_3 = falso\}$, é possível obter um conjunto de intervalo $S \subseteq V(D)$. Os vértices pretos são os vértices selecionados para o conjunto de intervalo e os vértices brancos são os vértices gerados.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[
     wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
@@ -258,9 +254,11 @@ Uma ilustração de um exemplo de construção para a prova do teorema~\ref{teo-
     \draw[arc] (c1-f2) to (cl2-c2.north);
     \draw[arc, rounded corners=8mm] (c1-f1.west) -- ++(-2.5, 0) |- ($(cl1-c1.south)+(0,-0.5)$) -| (cl4-c2.south);
     \draw[arc, rounded corners=8mm] (c3-t1.north) -- ++(0,4) -| (cl2-c2.north);
-    \draw[arc] plot [smooth] coordinates{(c2-t2.north) ($(c2-a3)+(0,2)$) ($(c2-a2)+(0,5.5)$) ($(c2-f1)+(-1.5,1.5)$) ($(c2-t1)+(-1,1.5)$) ($(c2-a1)+(-2,1)$) (cl2-c3.north)};
+    \draw[arc] plot [smooth, tension=0.7] coordinates{(c2-t2.north) ($(c2-a3)+(0,2)$) ($(c2-a2)+(0,5.5)$) ($(c2-f1)+(-1.5,1.5)$)  ($(c2-a1)+(-2,1)$) (cl2-c3.north)};
     \draw[arc] (c3-t2) to[bend left=20] (cl4-c3);
     \draw[arc] plot [smooth] coordinates{(c2-t1.west) ($(c2-a1)+(-0.3,-2)$) (cl3-c2.north)};
+
+    \draw[arc] (c2-f2) to[bend left=20] (cl4-c2);
     \end{tikzpicture}
     \caption{Exemplo da construção do teorema~\ref{teo-intervalplanar}}\label{reducaoInt}
 \end{figure}
@@ -272,9 +270,57 @@ Além do número de intervalo, outro parâmetro bastante estudado é o número d
 \problemDef{\hnd}{Um grafo planar orientado D e um inteiro positivo \emph{k}}{\hnumd{P_3} $\leq k$?}{}{gphnp3}
 
 \begin{theorem}
-    \hnd é \npc
+    \hnd~é~\npc.
     \begin{proof}
-        
+    Podemos ver que \hnd~está em \np~tendo um subconjunto $S$ de vértices de um grafo orientado $D$ como certificado. Neste caso, basta verificar se ao aplicarmos a função de intervalo $I(S)$, obtemos $I^k(S) = V(D)$, onde $k$ é a $k$-ésima aplicação da função de intervalo e $k \leq |V(D)|$.
+
+    Para provar a \npct, faremos uma redução do problema \sam~para \hnd. Seja $F$ uma instância de \sam, construíremos um grafo orientado $D$ da seguinte forma:
+
+    \begin{itemize}
+        \item Para cada variável $x_i$ de $F$, criamos um \emph{gadget} $D_{x_i}$ composto por 102 vértices, ver figura X. Para maior clareza na construção, podemos visualizar dois \emph{subgadgets} de $D_{x_i}$: $d_{x_i}$ e $d_{\overline{x_i}}$.
+        \item Para cada cláusula $C_j$ de $F$, construímos o \emph{gadget} $D_{c_j}$, composto pelo ciclo orientado $\{c_j^1, c_j^2, c_j^3, c_j^4, c_j^5, c_j^6\}$ e os vértices pendurados no ciclo $\{b_{c_j}^1, b_{c_j}^2, b_{c_j}^3, b_{c_j}^4, b_{c_j}^5, b_{c_j}^6\}$, e os arcos $(c_j^i, b_{c_j}^i)$, onde $i = j$ e $\forall i \in \{1, \ldots, 6\}$. Ver figura~\ref{fig:gadgetClHn}.
+    \end{itemize}
     \end{proof}
 \end{theorem}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+    wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
+    bnode/.style={circle, draw, fill=black, minimum size=5mm, inner sep=0pt},
+    arc/.style={-{Stealth[length=2.5mm]}, thick, shorten >=1pt, shorten <=1pt},
+    scale=0.6
+    ]
+
+    \node[bnode, label=above:$c_j^1$](c1) at (90:6){};
+    \node[bnode, label=right:$c_j^2$](c2) at (30:6){};
+    \node[bnode, label=right:$c_j^3$](c3) at (-30:6){};
+    \node[bnode, label=below:$c_j^4$](c4) at (-90:6){};
+    \node[bnode, label=left:$c_j^5$](c5) at (-150:6){};
+    \node[bnode, label=left:$c_j^6$](c6) at (150:6){};
+
+    \node[bnode, label=below:$b_{c_j}^1$](bc1) at (90:3.5){};
+    \node[bnode, label=below left:$b_{c_j}^2$](bc2) at (30:3.5){};
+    \node[bnode, label=above left:$b_{c_j}^3$](bc3) at (-30:3.5){};
+    \node[bnode, label=above:$b_{c_j}^4$](bc4) at (-90:3.5){};
+    \node[bnode, label=above right:$b_{c_j}^5$](bc5) at (-150:3.5){};
+    \node[bnode, label=below right:$b_{c_j}^6$](bc6) at (150:3.5){};
+
+    \draw[arc, bend left=20] (c1) to (c2);
+    \draw[arc, bend left=20] (c2) to (c3);
+    \draw[arc, bend left=20] (c3) to (c4);
+    \draw[arc, bend left=20] (c4) to (c5);
+    \draw[arc, bend left=20] (c5) to (c6);
+    \draw[arc, bend left=20] (c6) to (c1);
+
+    \draw[arc] (c1) to (bc1);
+    \draw[arc] (c2) to (bc2);
+    \draw[arc] (c3) to (bc3);
+    \draw[arc] (c4) to (bc4);
+    \draw[arc] (c5) to (bc5);
+    \draw[arc] (c6) to (bc6);
+
+    \end{tikzpicture}
+    \caption{Gadget $D_{c_j}$ de cláusulas}\label{fig:gadgetClHn}
+\end{figure}
 

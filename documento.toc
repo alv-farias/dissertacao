@@ -26,4 +26,4 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Conclusão}}{34}{chapter.6}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase []{REFER\^ENCIAS}}{35}{section*.20}%
+\contentsline {chapter}{\MakeTextUppercase []{REFER\^ENCIAS}}{35}{section*.21}%

@@ -55,6 +55,10 @@ ISSN 0195-6698.
 Dispon{\'\i}vel em:
   \url{https://www.sciencedirect.com/science/article/pii/S0195669899903013}.}
 
+\bibitem[Cormen 2012]{cormen2012algoritmos}
+\abntrefinfo{Cormen}{CORMEN}{2012}
+{CORMEN, T. \textbf{Algoritmos - Teoria e Pr{\'a}tica}. [S.l.]: GEN LTC, 2012.}
+
 \bibitem[Erdös \textit{et al.} 1972]{ERDOS1972}
 \abntrefinfo{Erdös \textit{et al.}}{ERDöS \textit{et al.}}{1972}
 {ERDöS, P.; FRIED, E.; HAJNAL, A.; MILNER, E. Some remarks on simple
@@ -68,6 +72,12 @@ Dispon{\'\i}vel em:
   Computação}. Porto Alegre, RS, Brasil: SBC, 2026. p. 129--132.
 ISSN 2595-6116. Dispon{\'\i}vel em:
   \url{https://sol.sbc.org.br/index.php/etc/article/view/43652}.}
+
+\bibitem[Garey e Johnson 1990]{garey1990}
+\abntrefinfo{Garey e Johnson}{GAREY; JOHNSON}{1990}
+{GAREY, M.~R.; JOHNSON, D.~S. \textbf{Computers and Intractability; A Guide to
+  the Theory of NP-Completeness}. USA: W. H. Freeman \& Co., 1990.
+ISBN 0716710455.}
 
 \bibitem[Gary \textit{et al.} 2003]{CHARTRAND2003}
 \abntrefinfo{Gary \textit{et al.}}{GARY \textit{et al.}}{2003}
