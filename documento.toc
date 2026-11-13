@@ -24,6 +24,6 @@
 \contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Resultados de Complexidade em Grafos planares}}{29}{chapter.5}%
 \contentsline {section}{\numberline {5.1}NP-completude para grafos planares orientados}{29}{section.5.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Conclusão}}{34}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase []{Conclusão}}{35}{chapter.6}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase []{REFER\^ENCIAS}}{35}{section*.21}%
+\contentsline {chapter}{\MakeTextUppercase []{REFER\^ENCIAS}}{36}{section*.22}%

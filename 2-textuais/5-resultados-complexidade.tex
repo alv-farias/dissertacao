@@ -288,8 +288,8 @@ Além do número de intervalo, outro parâmetro bastante estudado é o número d
     \begin{tikzpicture}[
     wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
     bnode/.style={circle, draw, fill=black, minimum size=5mm, inner sep=0pt},
-    arc/.style={-{Stealth[length=2.5mm]}, thick, shorten >=1pt, shorten <=1pt},
-    scale=0.6
+    arc/.style={-{Stealth[length=2.5mm]}, line width=1.5pt, shorten >=1pt, shorten <=1pt},
+    scale=0.48
     ]
 
     \node[bnode, label=above:$c_j^1$](c1) at (90:6){};
@@ -299,12 +299,12 @@ Além do número de intervalo, outro parâmetro bastante estudado é o número d
     \node[bnode, label=left:$c_j^5$](c5) at (-150:6){};
     \node[bnode, label=left:$c_j^6$](c6) at (150:6){};
 
-    \node[bnode, label=below:$b_{c_j}^1$](bc1) at (90:3.5){};
-    \node[bnode, label=below left:$b_{c_j}^2$](bc2) at (30:3.5){};
-    \node[bnode, label=above left:$b_{c_j}^3$](bc3) at (-30:3.5){};
-    \node[bnode, label=above:$b_{c_j}^4$](bc4) at (-90:3.5){};
-    \node[bnode, label=above right:$b_{c_j}^5$](bc5) at (-150:3.5){};
-    \node[bnode, label=below right:$b_{c_j}^6$](bc6) at (150:3.5){};
+    \node[bnode, label=right:$b_{c_j}^1$](bc1) at (90:3.5){};
+    \node[bnode, label=below right:$b_{c_j}^2$](bc2) at (30:3.5){};
+    \node[bnode, label=below:$b_{c_j}^3$](bc3) at (-30:3.5){};
+    \node[bnode, label=left:$b_{c_j}^4$](bc4) at (-90:3.5){};
+    \node[bnode, label=above:$b_{c_j}^5$](bc5) at (-150:3.5){};
+    \node[bnode, label=above right:$b_{c_j}^6$](bc6) at (150:3.5){};
 
     \draw[arc, bend left=20] (c1) to (c2);
     \draw[arc, bend left=20] (c2) to (c3);
@@ -322,5 +322,124 @@ Além do número de intervalo, outro parâmetro bastante estudado é o número d
 
     \end{tikzpicture}
     \caption{Gadget $D_{c_j}$ de cláusulas}\label{fig:gadgetClHn}
+\end{figure}
+
+\begin{figure}[ht]
+    
+    \begin{tikzpicture}[
+    wnode/.style={circle, draw, fill=white, minimum size=2mm, inner sep=0pt},
+    bnode/.style={circle, draw, fill=black, minimum size=2mm, inner sep=0pt},
+    arc/.style={-{Latex[length=1.5mm]}, line width=1pt, shorten >=1pt, shorten <=1pt},
+    scale=0.38
+    ]
+    \begin{scope}[name prefix=x1-]
+        %caminho do lado esquerdo
+        \node[bnode, label=above:$a_{x_i}^1$](a1) at (0,0){};
+        %vértices internos do caminho ax2-ax1 (i)
+        \node[bnode](i1) at (3,0){};
+        \node[bnode](i2) at (6,0){};
+        \node[bnode](i3) at (9,0){};
+        \node[bnode](i4) at (12,0){};
+        \node[bnode](i5) at (15,0){};
+        %extremidade do caminho
+        \node[bnode, label=above:$a_{x_i}^2$](a2) at (18,0){};
+
+        %vértice abaixo do ax2 (ax3)
+        \node[bnode, label=below:$a_{x_i}^3$](a3) at (18,-6){};
+
+        %portão do Jonas
+        \node[bnode](m1) at (22.5,-3){}; %meio
+        \node[bnode, label=above:$a_{x_i}^4$](a4) at (27,0){};
+        \node[bnode, label=below:$a_{x_i}^5$](a5) at (27,-6){};
+        \node[bnode](e1) at (21,0){};
+        \node[bnode](e1) at (21,-6){};
+        \node[bnode](e1) at (24,0){};
+        \node[bnode](e1) at (24,-6){};
+        \node[bnode](e1) at (19.5,-3){};
+        \node[bnode](e1) at (25.5,-3){};
+
+        %vértices pedurados nos internos do caminho ax2-ax1 (pi) (2 a 5)
+        \node[bnode](pi2) at (6,-2){};
+        \node[bnode](pi3) at (9,-2){};
+        \node[bnode](pi4) at (12,-2){};
+        \node[bnode](pi5) at (15,-2){};
+
+        %base da casinha em cima dos internos (bci) (2 a 5)
+        \node[bnode](bci2) at (6,2){};
+        \node[bnode](bci3) at (9,2){};
+        \node[bnode](bci4) at (12,2){};
+        \node[bnode](bci5) at (15,2){};
+
+        %vértices pendurados na base da casinha (pbc)
+        \node[bnode](pbc2) at (4.3,2){};
+        \node[bnode](pbc3) at (7.3,2){};
+        \node[bnode](pbc4) at (10.3,2){};
+        \node[bnode](pbc5) at (13.3,2){};
+        
+        %topo das casinhas (tc)
+        \node[bnode](tc1) at (4.5,4){};
+        \node[bnode](tc2) at (7.5,4){};
+        \node[bnode](tc3) at (10.5,4){};
+        \node[bnode](tc4) at (13.5,4){};
+
+        %topo do topo da casinha (na coluna 2 e 4)
+        \node[bnode, label=above:$a_{x_i}^{10}$](ttci1) at (6,6){};
+        \node[bnode, label=above:$a_{x_i}^{9}$](ttci2) at (12,6){};
+
+        %arcos do caminho ax2-ax1 em D_xi
+        \draw[arc] (a2) to (i5);
+        \draw[arc] (i5) to (i4);
+        \draw[arc] (i4) to (i3);
+        \draw[arc] (i3) to (i2);
+        \draw[arc] (i2) to (i1);
+        \draw[arc] (i1) to (a1);
+
+        %arcos dos internos para os pendurados (i2 a i5)
+        \draw[arc] (i2) to (pi2);
+        \draw[arc] (i3) to (pi3);
+        \draw[arc] (i4) to (pi4);
+        \draw[arc] (i5) to (pi5);
+
+        %arcos dos internos para a base das casinhas (i2 a i5)
+        \draw[arc] (i2) to (bci2);
+        \draw[arc] (i3) to (bci3);
+        \draw[arc] (i4) to (bci4);
+        \draw[arc] (i5) to (bci5);
+
+        %arcos da base da casinha para os pendurados (bci2 a bci5)
+        \draw[arc] (bci2) to (pbc2);
+        \draw[arc] (bci3) to (pbc3);
+        \draw[arc] (bci4) to (pbc4);
+        \draw[arc] (bci5) to (pbc5);
+
+        %arcos da base para os topos das casinhas
+        \draw[arc] (bci2) to (tc1);
+        \draw[arc] (bci3) to (tc2);
+        \draw[arc] (bci4) to (tc3);
+        \draw[arc] (bci5) to (tc4);
+
+        \draw[arc, rounded corners=6mm] (tc1) -| (i1);
+        \draw[arc] (tc2) to (bci2);
+        \draw[arc] (tc3) to (bci3);
+        \draw[arc] (tc4) to (bci4);
+
+        %arcos do topo da casinha para o topo
+        \draw[arc] (ttci1) to (tc1);
+        \draw[arc] (ttci2) to (tc3);
+        \draw[arc] (tc4) to (ttci2);
+        \draw[arc] (tc2) to (ttci1);
+
+        %arco do primeiro interno para o ax3
+        \draw[arc, rounded corners=8mm] (i1) |- (a3);
+
+        %arcos portão do jonas 1
+        \draw[arc] (a2) to[out=60, in=120] (a4);
+        \draw[arc] (a3) to[out=120, in=240] (a2);
+        \draw[arc] (a5) to[out=-120, in=-50] (a3);
+
+    \end{scope}
+        
+    \end{tikzpicture}
+    \caption{Gadget $D_{x_i}$ para as variáveis}
 \end{figure}
 
