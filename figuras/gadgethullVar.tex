@@ -1,0 +1,109 @@
+%% ====================================================================
+%%  Styles
+%% ====================================================================
+\tikzset{
+  arc/.style={-{Latex[length=1.5mm]}, line width=1pt, shorten >=1pt, shorten <=1pt},
+  rev/.style={{Latex[length=1.5mm]}-},       % add to an arc to REVERSE its direction
+  ctr/.style={shorten >=3pt, shorten <=3pt}, % for paths that start/end at node centres
+  v/.style={circle, fill=black, inner sep=1.6pt},
+}
+
+\begin{tikzpicture}[x=1.3cm, y=1.3cm]
+ 
+%% ------------------------------------------------------------------
+%%  Global parameters (1 unit = length of a "normal" edge)
+%% ------------------------------------------------------------------
+\pgfmathsetmacro{\R}{2*cos(22.5)}              % radius of the circle through c1,X,Y,c2
+\pgfmathsetmacro{\ha}{0.75}                    % half horizontal diagonal of the central rhombi
+\pgfmathsetmacro{\hb}{sqrt(1-\ha*\ha)}         % half vertical diagonal (rhombus with side 1)
+\pgfmathsetmacro{\h}{\R*cos(45)+\ha}           % |x| of the two wheel centres
+\pgfmathsetmacro{\ys}{\R*sin(45)}              % height of the spine / of c1 and X
+\pgfmathsetmacro{\xa}{-\h-\R*cos(45)-5}        % x of vertex a on the spine
+\pgfmathsetmacro{\yu}{\ys+1}                   % height of the u_i row
+\pgfmathsetmacro{\hr}{sqrt(3)/2}               % height of the equilateral roof triangles
+ 
+%% ------------------------------------------------------------------
+%%  Half of the graph. #1 = name prefix (L or R). The right half is the
+%%  mirror image (xscale=-1) of the left half, with the SAME orientations.
+%% ------------------------------------------------------------------
+\newcommand{\half}[1]{%
+  %% ---------------- NODES ----------------------------------------------
+  \node[v] (#1O) at (-\h,0) {};
+  \foreach \k/\ang in {1/112.5, 2/67.5, 3/22.5, 4/-22.5, 5/-67.5, 6/-112.5, 7/-157.5, 8/157.5}{
+    \path (#1O) ++(\ang:1)   node[v] (#1q\k) {};
+    \path (#1O) ++(\ang:1.5) node[v] (#1w\k) {};
+  }
+  \path (#1O) ++(135:\R)  node[v] (#1c1) {};
+  \path (#1O) ++(45:\R)   node[v] (#1X)  {};
+  \path (#1O) ++(-45:\R)  node[v] (#1Y)  {};
+  \path (#1O) ++(-135:\R) node[v] (#1c2) {};
+  \path (#1X) ++(80:0.5)  node[v] (#1Xl) {};
+  \path (#1Y) ++(-80:0.5) node[v] (#1Yl) {};
+  \path (\xa,\ys) ++(-0.5,0) node[v] (#1s0) {};
+  \node[v] (#1a) at (\xa,\ys) {};
+  \foreach \i in {1,2,3,4}{
+    \node[v] (#1p\i) at (\xa+\i,\ys)     {};
+    \node[v] (#1r\i) at (\xa+\i,\ys-0.5) {};
+    \node[v] (#1u\i) at (\xa+\i,\yu)     {};
+    \node[v] (#1l\i) at (\xa+\i-0.5,\yu) {};
+  }
+  \node[v] (#1A) at (\xa+0.5,\yu+\hr)   {};
+  \node[v] (#1B) at (\xa+1,  \yu+2*\hr) {};
+  \node[v] (#1C) at (\xa+1.5,\yu+\hr)   {};
+  \node[v] (#1D) at (\xa+2.5,\yu+\hr)   {};
+  \node[v] (#1E) at (\xa+3,  \yu+2*\hr) {};
+  \node[v] (#1F) at (\xa+3.5,\yu+\hr)   {};
+ 
+  %% ---------------- ARCS ------------------------------------------------
+  %% Straight arcs: every pair  tail/head  is an arc  tail -> head.
+  %% To change an orientation, simply swap the two names of the pair.
+  \foreach \va/\vb in {
+      % spine of the gadget (s0 is a sink)
+      a/s0,  p1/a,  p2/p1,  p3/p2,  p4/p3,  c1/p4,
+      % pendant vertices s0, r_i, l_i, Xl, Yl are SINKS (arcs arrive at them)
+      p1/r1, p2/r2, p3/r3, p4/r4,
+      u1/l1, u2/l2, u3/l3, u4/l4,
+      X/Xl,  Y/Yl,
+      % wheel leaves w_k are sources (arcs leave them)
+      w1/q1, w2/q2, w3/q3, w4/q4, w5/q5, w6/q6, w7/q7, w8/q8,
+      % vertical arcs of the gadget
+      p1/u1, p2/u2, p3/u3, p4/u4,
+      % roofs
+      B/A, C/B,  E/D, F/E,
+      u1/A, C/u1, u2/C, D/u2, u3/D, F/u3, u4/F,
+      % wheel: centre -> spokes -> corners
+      O/q1, O/q2, O/q3, O/q4, O/q5, O/q6, O/q7, O/q8,
+      q1/c1, q8/c1, q2/X, q3/X, q4/Y, q5/Y, q6/c2, q7/c2}{
+    \draw[arc] (#1\va) -- (#1\vb);
+  }
+ 
+  %% Arcs towards the centre of the figure (to flip: swap the nodes)
+  \draw[arc] (#1X) -- (Mt);
+  \draw[arc] (#1X) -- (Ml);
+  \draw[arc] (#1Y) -- (Mb1);
+  \draw[arc] (#1Y) -- (Mb2);
+ 
+  %% Curved arcs (to flip: add the key  rev  inside the brackets, e.g. [arc,ctr,rev])
+  \draw[arc,ctr] (#1c1) arc[start angle=135, end angle=45,  radius=\R];   % c1 -> X
+  \draw[arc,ctr] (#1c1) arc[start angle=135, end angle=225, radius=\R];   % c1 -> c2
+  \draw[arc,ctr] (#1c2) arc[start angle=225, end angle=315, radius=\R];   % c2 -> Y
+  \draw[arc,ctr,rev] (#1a) .. controls +(0,1.0) and +(-0.6,0) .. (#1A);   % A  -> a  (reversed)
+  \draw[arc,rounded corners=8pt] (#1a) |- (#1c2);                         % a  -> c2
+}
+ 
+%% ------------------------------------------------------------------
+%%  Centre of the figure (on the axis of symmetry x = 0)
+%% ------------------------------------------------------------------
+\node[v] (Mt)  at (0, \ys+\hb)  {};   \node[v] (Mtl)  at (0, \ys+\hb+0.5) {};
+\node[v] (Ml)  at (0, \ys-\hb)  {};   \node[v] (Mll)  at (0, \ys-\hb+0.5) {};
+\node[v] (Mb1) at (0,-\ys+\hb)  {};   \node[v] (Mb1l) at (0,-\ys+\hb-0.5) {};
+\node[v] (Mb2) at (0,-\ys-\hb)  {};   \node[v] (Mb2l) at (0,-\ys-\hb-0.5) {};
+\foreach \va/\vb in {Mtl/Mt, Mll/Ml, Mb1l/Mb1, Mb2l/Mb2}{ \draw[arc] (\va) -- (\vb); }
+ 
+%% ------------------------------------------------------------------
+%%  The two halves
+%% ------------------------------------------------------------------
+\begin{scope}\half{L}\end{scope}
+\begin{scope}[xscale=-1]\half{R}\end{scope}
+ 
+\end{tikzpicture}

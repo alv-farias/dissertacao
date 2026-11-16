@@ -1,0 +1,36 @@
+\begin{tikzpicture}[
+    wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
+    bnode/.style={circle, draw, fill=black, minimum size=5mm, inner sep=0pt},
+    arc/.style={-{Stealth[length=2.5mm]}, line width=1.5pt, shorten >=1pt, shorten <=1pt},
+    scale=0.48
+    ]
+
+    \node[bnode, label=above:$c_j^1$](c1) at (90:6){};
+    \node[bnode, label=right:$c_j^2$](c2) at (30:6){};
+    \node[bnode, label=right:$c_j^3$](c3) at (-30:6){};
+    \node[bnode, label=below:$c_j^4$](c4) at (-90:6){};
+    \node[bnode, label=left:$c_j^5$](c5) at (-150:6){};
+    \node[bnode, label=left:$c_j^6$](c6) at (150:6){};
+
+    \node[bnode, label=right:$b_{c_j}^1$](bc1) at (90:3.5){};
+    \node[bnode, label=below right:$b_{c_j}^2$](bc2) at (30:3.5){};
+    \node[bnode, label=below:$b_{c_j}^3$](bc3) at (-30:3.5){};
+    \node[bnode, label=left:$b_{c_j}^4$](bc4) at (-90:3.5){};
+    \node[bnode, label=above:$b_{c_j}^5$](bc5) at (-150:3.5){};
+    \node[bnode, label=above right:$b_{c_j}^6$](bc6) at (150:3.5){};
+
+    \draw[arc, bend left=20] (c1) to (c2);
+    \draw[arc, bend left=20] (c2) to (c3);
+    \draw[arc, bend left=20] (c3) to (c4);
+    \draw[arc, bend left=20] (c4) to (c5);
+    \draw[arc, bend left=20] (c5) to (c6);
+    \draw[arc, bend left=20] (c6) to (c1);
+
+    \draw[arc] (c1) to (bc1);
+    \draw[arc] (c2) to (bc2);
+    \draw[arc] (c3) to (bc3);
+    \draw[arc] (c4) to (bc4);
+    \draw[arc] (c5) to (bc5);
+    \draw[arc] (c6) to (bc6);
+
+\end{tikzpicture}

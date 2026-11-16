@@ -277,169 +277,156 @@ Além do número de intervalo, outro parâmetro bastante estudado é o número d
     Para provar a \npct, faremos uma redução do problema \sam~para \hnd. Seja $F$ uma instância de \sam, construíremos um grafo orientado $D$ da seguinte forma:
 
     \begin{itemize}
-        \item Para cada variável $x_i$ de $F$, criamos um \emph{gadget} $D_{x_i}$ composto por 102 vértices, ver figura X. Para maior clareza na construção, podemos visualizar dois \emph{subgadgets} de $D_{x_i}$: $d_{x_i}$ e $d_{\overline{x_i}}$.
+        \item Para cada variável $x_i$ de $F$, criamos um \emph{gadget} $D_{x_i}$ composto por 102 vértices, ver figura~\ref{fig:gadgetG}. Para maior clareza na construção, podemos visualizar dois \emph{subgadgets} de $D_{x_i}$: $d_{x_i}$ e $d_{\overline{x_i}}$.
         \item Para cada cláusula $C_j$ de $F$, construímos o \emph{gadget} $D_{c_j}$, composto pelo ciclo orientado $\{c_j^1, c_j^2, c_j^3, c_j^4, c_j^5, c_j^6\}$ e os vértices pendurados no ciclo $\{b_{c_j}^1, b_{c_j}^2, b_{c_j}^3, b_{c_j}^4, b_{c_j}^5, b_{c_j}^6\}$, e os arcos $(c_j^i, b_{c_j}^i)$, onde $i = j$ e $\forall i \in \{1, \ldots, 6\}$. Ver figura~\ref{fig:gadgetClHn}.
+        \item Se o literal $x_i$ aparece duas vezes em $F$, criamos vértices auxiliares $f_{x_i}^1, f_{x_i}^2$ e adicionamos os arcos $(a_{x_i}^7, f_{x_i}^1)$ e $(a_{x_i}^8, f_{x_i}^2)$. Caso contrário, adicionamos apenas o vértice $f_{x_i}^1$ e o arco $(a_{x_i}^7, f_{x_i}^1)$.
+        \item Se o literal $\overline{x_i}$ aparece duas vezes em $F$, criamos vértices auxiliares $f_{\overline{x_i}}^1, f_{\overline{x_i}}^2$ e adicionamos os arcos $(a_{\overline{x_i}}^7, f_{\overline{x_i}}^1)$ e $(a_{\overline{x_i}}^8, f_{\overline{x_i}}^2)$. Caso contrário, adicionamos apenas o vértice $f_{\overline{x_i}}^1$ e o arco $(a_{\overline{x_i}}^7, f_{\overline{x_i}}^1)$.
+        \item Os vértices $\{a_{x_i}^r, a_{\overline{x_i}}^r : 7 \leq r \leq 10\}$ e $\{c_j^r:1 \leq r \leq 6\}$ são os vértices \emph{conectores}, ou seja, são com esses vértices que conectamos os \emph{gadgets} de variáveis com os \emph{gadgets} de cláusulas.
     \end{itemize}
+
+    Considerando a representação plana do grafo $H_F$ como um \emph{template} para o grafo orientado $D$, adicionamos arcos que conectam os \emph{gadgets} da seguinte forma:
+
+    \begin{itemize}
+        \item Seja $v_{x_i} \in V(H_F)$, um vértice que representa a variável $x_i$. Se $x_i$ aparece em uma cláusula $c_j$, temos em $H_F$ a aresta $(x_i, c_j)$. Suponha que $d(x_i) = 3$, nesse caso, temos que a variável aparece em 3 cláusulas, $C_x, C_y, C_z$. Suponha ainda que $x_i$ aparece duas vezes positivo e uma vez negativo, respectivamente. Neste caso, temos que utilizar os vértices conectores de $D_{x_i}$ e de $D_{c_j}$ para realizar as conexões com base no \emph{template} $H_F$. Temos quatro conectores em cada \emph{subgadget} de $D_{x_i}$. Neste caso, selecionamos dois pares do lado $d_{x_i}$ e um par do lado $d_{\overline{x_i}}$. Por exemplo, podemos conectar da seguinte forma, quando o literal $x_i$ aparece positivo: $(a_{x_i}^7, c_x^1), (a_{x_i}^{10}, c_x^2), (a_{x_i}^8, c_y^1), (a_{x_i}^9, c_y^2)$. E adicionamos $(a_{\overline{x_i}}^7, c_z^1), (a_{\overline{x_i}}^{10}, c_z^2)$ quando o literal é negativo. Os outros casos são semelhantes ao apresentado.
+        \item O caso apresentado acima é uma possibilidade de conexões. A construção segue de maneira semelhante, mas como temos um \emph{template} planar, devemos sempre seguir as conexões de modo que a planaridade de $H_F$ seja mantida em $D$. Para isso, quando conectamos $D_{x_i}$ a $D_{c_j}$, selecionamos um par $c_j^r, c_j^{r+1}$ disponível e quando uma outra variável for conectada a uma mesma cláusula, selecinamos o próximo par de conectores disponível em $D_{c_j}$.
+        \item Ainda com a finalidade de mantermos a planaridade, o mesmo vale na escolha dos conectores de $D_{x_i}$, onde devemos selecionar pares seguindo a planaridade apresentada no \emph{template} $H_F$.
+    \end{itemize}
+
+    Vamos demonstrar que dada uma instância $F$ de~\sam, $F$ é satisfeita se, e somente se $D$ tem um conjunto de envoltória $S$ de tamanho $6m + 43n$, onde $m$ é o número de clásulas e $n$ é o número de variáveis.
+
+    
+
     \end{proof}
 \end{theorem}
 
 \begin{figure}[ht]
     \centering
-    \begin{tikzpicture}[
-    wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
-    bnode/.style={circle, draw, fill=black, minimum size=5mm, inner sep=0pt},
-    arc/.style={-{Stealth[length=2.5mm]}, line width=1.5pt, shorten >=1pt, shorten <=1pt},
-    scale=0.48
-    ]
-
-    \node[bnode, label=above:$c_j^1$](c1) at (90:6){};
-    \node[bnode, label=right:$c_j^2$](c2) at (30:6){};
-    \node[bnode, label=right:$c_j^3$](c3) at (-30:6){};
-    \node[bnode, label=below:$c_j^4$](c4) at (-90:6){};
-    \node[bnode, label=left:$c_j^5$](c5) at (-150:6){};
-    \node[bnode, label=left:$c_j^6$](c6) at (150:6){};
-
-    \node[bnode, label=right:$b_{c_j}^1$](bc1) at (90:3.5){};
-    \node[bnode, label=below right:$b_{c_j}^2$](bc2) at (30:3.5){};
-    \node[bnode, label=below:$b_{c_j}^3$](bc3) at (-30:3.5){};
-    \node[bnode, label=left:$b_{c_j}^4$](bc4) at (-90:3.5){};
-    \node[bnode, label=above:$b_{c_j}^5$](bc5) at (-150:3.5){};
-    \node[bnode, label=above right:$b_{c_j}^6$](bc6) at (150:3.5){};
-
-    \draw[arc, bend left=20] (c1) to (c2);
-    \draw[arc, bend left=20] (c2) to (c3);
-    \draw[arc, bend left=20] (c3) to (c4);
-    \draw[arc, bend left=20] (c4) to (c5);
-    \draw[arc, bend left=20] (c5) to (c6);
-    \draw[arc, bend left=20] (c6) to (c1);
-
-    \draw[arc] (c1) to (bc1);
-    \draw[arc] (c2) to (bc2);
-    \draw[arc] (c3) to (bc3);
-    \draw[arc] (c4) to (bc4);
-    \draw[arc] (c5) to (bc5);
-    \draw[arc] (c6) to (bc6);
-
-    \end{tikzpicture}
+    \resizebox{.3\textwidth}{!}{\input{figuras/gadgethullCl.tex}}
     \caption{Gadget $D_{c_j}$ de cláusulas}\label{fig:gadgetClHn}
 \end{figure}
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
     
-    \begin{tikzpicture}[
-    wnode/.style={circle, draw, fill=white, minimum size=2mm, inner sep=0pt},
-    bnode/.style={circle, draw, fill=black, minimum size=2mm, inner sep=0pt},
-    arc/.style={-{Latex[length=1.5mm]}, line width=1pt, shorten >=1pt, shorten <=1pt},
-    scale=0.38
-    ]
-    \begin{scope}[name prefix=x1-]
-        %caminho do lado esquerdo
-        \node[bnode, label=above:$a_{x_i}^1$](a1) at (0,0){};
-        %vértices internos do caminho ax2-ax1 (i)
-        \node[bnode](i1) at (3,0){};
-        \node[bnode](i2) at (6,0){};
-        \node[bnode](i3) at (9,0){};
-        \node[bnode](i4) at (12,0){};
-        \node[bnode](i5) at (15,0){};
-        %extremidade do caminho
-        \node[bnode, label=above:$a_{x_i}^2$](a2) at (18,0){};
+%     \begin{tikzpicture}[
+%     wnode/.style={circle, draw, fill=white, minimum size=2mm, inner sep=0pt},
+%     bnode/.style={circle, draw, fill=black, minimum size=2mm, inner sep=0pt},
+%     arc/.style={-{Latex[length=1.5mm]}, line width=1pt, shorten >=1pt, shorten <=1pt},
+%     scale=0.38
+%     ]
+%     \begin{scope}[name prefix=x1-]
+%         %caminho do lado esquerdo
+%         \node[bnode, label=above:$a_{x_i}^1$](a1) at (0,0){};
+%         %vértices internos do caminho ax2-ax1 (i)
+%         \node[bnode](i1) at (3,0){};
+%         \node[bnode](i2) at (6,0){};
+%         \node[bnode](i3) at (9,0){};
+%         \node[bnode](i4) at (12,0){};
+%         \node[bnode](i5) at (15,0){};
+%         %extremidade do caminho
+%         \node[bnode, label=above:$a_{x_i}^2$](a2) at (18,0){};
 
-        %vértice abaixo do ax2 (ax3)
-        \node[bnode, label=below:$a_{x_i}^3$](a3) at (18,-6){};
+%         %vértice abaixo do ax2 (ax3)
+%         \node[bnode, label=below:$a_{x_i}^3$](a3) at (18,-6){};
 
-        %portão do Jonas
-        \node[bnode](m1) at (22.5,-3){}; %meio
-        \node[bnode, label=above:$a_{x_i}^4$](a4) at (27,0){};
-        \node[bnode, label=below:$a_{x_i}^5$](a5) at (27,-6){};
-        \node[bnode](e1) at (21,0){};
-        \node[bnode](e1) at (21,-6){};
-        \node[bnode](e1) at (24,0){};
-        \node[bnode](e1) at (24,-6){};
-        \node[bnode](e1) at (19.5,-3){};
-        \node[bnode](e1) at (25.5,-3){};
+%         %portão do Jonas
+%         \node[bnode](m1) at (22.5,-3){}; %meio
+%         \node[bnode, label=above:$a_{x_i}^4$](a4) at (27,0){};
+%         \node[bnode, label=below:$a_{x_i}^5$](a5) at (27,-6){};
+%         \node[bnode](e1) at (21,0){};
+%         \node[bnode](e1) at (21,-6){};
+%         \node[bnode](e1) at (24,0){};
+%         \node[bnode](e1) at (24,-6){};
+%         \node[bnode](e1) at (19.5,-3){};
+%         \node[bnode](e1) at (25.5,-3){};
 
-        %vértices pedurados nos internos do caminho ax2-ax1 (pi) (2 a 5)
-        \node[bnode](pi2) at (6,-2){};
-        \node[bnode](pi3) at (9,-2){};
-        \node[bnode](pi4) at (12,-2){};
-        \node[bnode](pi5) at (15,-2){};
+%         %vértices pedurados nos internos do caminho ax2-ax1 (pi) (2 a 5)
+%         \node[bnode](pi2) at (6,-2){};
+%         \node[bnode](pi3) at (9,-2){};
+%         \node[bnode](pi4) at (12,-2){};
+%         \node[bnode](pi5) at (15,-2){};
 
-        %base da casinha em cima dos internos (bci) (2 a 5)
-        \node[bnode](bci2) at (6,2){};
-        \node[bnode](bci3) at (9,2){};
-        \node[bnode](bci4) at (12,2){};
-        \node[bnode](bci5) at (15,2){};
+%         %base da casinha em cima dos internos (bci) (2 a 5)
+%         \node[bnode](bci2) at (6,2){};
+%         \node[bnode](bci3) at (9,2){};
+%         \node[bnode](bci4) at (12,2){};
+%         \node[bnode](bci5) at (15,2){};
 
-        %vértices pendurados na base da casinha (pbc)
-        \node[bnode](pbc2) at (4.3,2){};
-        \node[bnode](pbc3) at (7.3,2){};
-        \node[bnode](pbc4) at (10.3,2){};
-        \node[bnode](pbc5) at (13.3,2){};
+%         %vértices pendurados na base da casinha (pbc)
+%         \node[bnode](pbc2) at (4.3,2){};
+%         \node[bnode](pbc3) at (7.3,2){};
+%         \node[bnode](pbc4) at (10.3,2){};
+%         \node[bnode](pbc5) at (13.3,2){};
         
-        %topo das casinhas (tc)
-        \node[bnode](tc1) at (4.5,4){};
-        \node[bnode](tc2) at (7.5,4){};
-        \node[bnode](tc3) at (10.5,4){};
-        \node[bnode](tc4) at (13.5,4){};
+%         %topo das casinhas (tc)
+%         \node[bnode](tc1) at (4.5,4){};
+%         \node[bnode](tc2) at (7.5,4){};
+%         \node[bnode](tc3) at (10.5,4){};
+%         \node[bnode](tc4) at (13.5,4){};
 
-        %topo do topo da casinha (na coluna 2 e 4)
-        \node[bnode, label=above:$a_{x_i}^{10}$](ttci1) at (6,6){};
-        \node[bnode, label=above:$a_{x_i}^{9}$](ttci2) at (12,6){};
+%         %topo do topo da casinha (na coluna 2 e 4)
+%         \node[bnode, label=above:$a_{x_i}^{10}$](ttci1) at (6,6){};
+%         \node[bnode, label=above:$a_{x_i}^{9}$](ttci2) at (12,6){};
 
-        %arcos do caminho ax2-ax1 em D_xi
-        \draw[arc] (a2) to (i5);
-        \draw[arc] (i5) to (i4);
-        \draw[arc] (i4) to (i3);
-        \draw[arc] (i3) to (i2);
-        \draw[arc] (i2) to (i1);
-        \draw[arc] (i1) to (a1);
+%         %arcos do caminho ax2-ax1 em D_xi
+%         \draw[arc] (a2) to (i5);
+%         \draw[arc] (i5) to (i4);
+%         \draw[arc] (i4) to (i3);
+%         \draw[arc] (i3) to (i2);
+%         \draw[arc] (i2) to (i1);
+%         \draw[arc] (i1) to (a1);
 
-        %arcos dos internos para os pendurados (i2 a i5)
-        \draw[arc] (i2) to (pi2);
-        \draw[arc] (i3) to (pi3);
-        \draw[arc] (i4) to (pi4);
-        \draw[arc] (i5) to (pi5);
+%         %arcos dos internos para os pendurados (i2 a i5)
+%         \draw[arc] (i2) to (pi2);
+%         \draw[arc] (i3) to (pi3);
+%         \draw[arc] (i4) to (pi4);
+%         \draw[arc] (i5) to (pi5);
 
-        %arcos dos internos para a base das casinhas (i2 a i5)
-        \draw[arc] (i2) to (bci2);
-        \draw[arc] (i3) to (bci3);
-        \draw[arc] (i4) to (bci4);
-        \draw[arc] (i5) to (bci5);
+%         %arcos dos internos para a base das casinhas (i2 a i5)
+%         \draw[arc] (i2) to (bci2);
+%         \draw[arc] (i3) to (bci3);
+%         \draw[arc] (i4) to (bci4);
+%         \draw[arc] (i5) to (bci5);
 
-        %arcos da base da casinha para os pendurados (bci2 a bci5)
-        \draw[arc] (bci2) to (pbc2);
-        \draw[arc] (bci3) to (pbc3);
-        \draw[arc] (bci4) to (pbc4);
-        \draw[arc] (bci5) to (pbc5);
+%         %arcos da base da casinha para os pendurados (bci2 a bci5)
+%         \draw[arc] (bci2) to (pbc2);
+%         \draw[arc] (bci3) to (pbc3);
+%         \draw[arc] (bci4) to (pbc4);
+%         \draw[arc] (bci5) to (pbc5);
 
-        %arcos da base para os topos das casinhas
-        \draw[arc] (bci2) to (tc1);
-        \draw[arc] (bci3) to (tc2);
-        \draw[arc] (bci4) to (tc3);
-        \draw[arc] (bci5) to (tc4);
+%         %arcos da base para os topos das casinhas
+%         \draw[arc] (bci2) to (tc1);
+%         \draw[arc] (bci3) to (tc2);
+%         \draw[arc] (bci4) to (tc3);
+%         \draw[arc] (bci5) to (tc4);
 
-        \draw[arc, rounded corners=6mm] (tc1) -| (i1);
-        \draw[arc] (tc2) to (bci2);
-        \draw[arc] (tc3) to (bci3);
-        \draw[arc] (tc4) to (bci4);
+%         \draw[arc, rounded corners=6mm] (tc1) -| (i1);
+%         \draw[arc] (tc2) to (bci2);
+%         \draw[arc] (tc3) to (bci3);
+%         \draw[arc] (tc4) to (bci4);
 
-        %arcos do topo da casinha para o topo
-        \draw[arc] (ttci1) to (tc1);
-        \draw[arc] (ttci2) to (tc3);
-        \draw[arc] (tc4) to (ttci2);
-        \draw[arc] (tc2) to (ttci1);
+%         %arcos do topo da casinha para o topo
+%         \draw[arc] (ttci1) to (tc1);
+%         \draw[arc] (ttci2) to (tc3);
+%         \draw[arc] (tc4) to (ttci2);
+%         \draw[arc] (tc2) to (ttci1);
 
-        %arco do primeiro interno para o ax3
-        \draw[arc, rounded corners=8mm] (i1) |- (a3);
+%         %arco do primeiro interno para o ax3
+%         \draw[arc, rounded corners=8mm] (i1) |- (a3);
 
-        %arcos portão do jonas 1
-        \draw[arc] (a2) to[out=60, in=120] (a4);
-        \draw[arc] (a3) to[out=120, in=240] (a2);
-        \draw[arc] (a5) to[out=-120, in=-50] (a3);
+%         %arcos portão do jonas 1
+%         \draw[arc] (a2) to[out=60, in=120] (a4);
+%         \draw[arc] (a3) to[out=120, in=240] (a2);
+%         \draw[arc] (a5) to[out=-120, in=-50] (a3);
 
-    \end{scope}
+%     \end{scope}
         
-    \end{tikzpicture}
-    \caption{Gadget $D_{x_i}$ para as variáveis}
+%     \end{tikzpicture}
+%     \caption{Gadget $D_{x_i}$ para as variáveis}
+% \end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \resizebox{\textwidth}{!}{\input{figuras/gadgethullVar.tex}}
+  \caption{Gadget $D_{x_i}$ para as variáveis}\label{fig:gadgetG}
 \end{figure}
 
