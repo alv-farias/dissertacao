@@ -1,7 +1,7 @@
 \begin{tikzpicture}[
     wnode/.style={circle, draw, fill=white, minimum size=5mm, inner sep=0pt},
     bnode/.style={circle, draw, fill=black, minimum size=5mm, inner sep=0pt},
-    arc/.style={-{Stealth[length=2.5mm]}, line width=1.5pt, shorten >=1pt, shorten <=1pt},
+    arc/.style={-{Triangle[length=2.5mm]}, line width=1.5pt, shorten >=1pt, shorten <=1pt},
     scale=0.48
     ]
 
@@ -26,11 +26,11 @@
     \draw[arc, bend left=20] (c5) to (c6);
     \draw[arc, bend left=20] (c6) to (c1);
 
-    \draw[arc] (c1) to (bc1);
-    \draw[arc] (c2) to (bc2);
-    \draw[arc] (c3) to (bc3);
-    \draw[arc] (c4) to (bc4);
-    \draw[arc] (c5) to (bc5);
-    \draw[arc] (c6) to (bc6);
+    \draw[arc] (bc1) to (c1);
+    \draw[arc] (bc2) to (c2);
+    \draw[arc] (bc3) to (c3);
+    \draw[arc] (bc4) to (c4);
+    \draw[arc] (bc5) to (c5);
+    \draw[arc] (bc6) to (c6);
 
 \end{tikzpicture}
