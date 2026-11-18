@@ -7,7 +7,7 @@ Apresentamos o seguinte algoritmo para calcular o \emph{conjunto de intervalo} e
 \begin{algorithm}
   \SetAlgoLined
   \Entrada{$T, Ext(T)$}
-  \Saida{\emph{Interval Set de T}}
+  \Saida{\emph{Conjunto de Intervalo de T}}
   Inicialize $r^-(v) = 1$ e $r^+(v) = 1$ para todo $v \in V(T)$\\
   $S \leftarrow Ext(T)$\\
   Seja $(v_1, v_2, \ldots, v_n)$ uma pós-ordem de $T$\\
@@ -45,13 +45,13 @@ Apresentamos o seguinte algoritmo para calcular o \emph{conjunto de intervalo} e
       }
     }
   }
-  \caption{Interval Set em Árvores orientadas}\label{alg1}
+  \caption{Conjunto de Intervalo em Árvores orientadas}\label{alg1}
 \end{algorithm}
 
 \begin{theorem}
   Algoritmo\ref{alg1} retorna o menor conjunto de intervalo para a árvore T
   \begin{proof}
-  Seja $I^* = (i^*_1, \ldots, i^*_j, \ldots, i^*_n)$ uma sequência de escolhas ótimas para obtermos o \emph{Interval Set} de T, onde $i^*_i = 1$ se o vértice $v_i$ está no \emph{conjunto de intervalo} e $0$ caso contrário. Além disso, seja $S = (s_1, \ldots, s_j, \ldots, s_n)$ a sequência de escolhas feita pelo \emph{Algoritmo 1}. Se $I^*=S$, está resolvido. Suponha que $I^* \neq S$, neste caso, seja $i$ a primeira posição em que as sequências diferem.
+  Seja $I^* = (i^*_1, \ldots, i^*_j, \ldots, i^*_n)$ uma sequência de escolhas ótimas para obtermos o \emph{conjunto de intervalo} de T, onde $i^*_i = 1$ se o vértice $v_i$ está no \emph{conjunto de intervalo} e $0$ caso contrário. Além disso, seja $S = (s_1, \ldots, s_j, \ldots, s_n)$ a sequência de escolhas feita pelo \emph{Algoritmo 1}. Se $I^*=S$, está resolvido. Suponha que $I^* \neq S$, neste caso, seja $i$ a primeira posição em que as sequências diferem.
 
   Suponha primeiro que $i^*_i = 0$ e $s_i = 1$, ou seja, o vértice $v_i$ foi escolhido pelo \emph{algoritmo} mas não pela sequência $I^*$. Com isso temos os seguintes casos:
 
