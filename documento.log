@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.2.26)  17 NOV 2026 17:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.2.26)  18 NOV 2026 14:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1754,18 +1754,18 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 61750 strings out of 475969
- 1326432 string characters out of 5789452
- 2109666 words of memory out of 5000000
- 82175 multiletter control sequences out of 15000+600000
- 654628 words of font info for 419 fonts, out of 8000000 for 9000
+ 61766 strings out of 475969
+ 1326678 string characters out of 5789452
+ 2107108 words of memory out of 5000000
+ 82180 multiletter control sequences out of 15000+600000
+ 655396 words of font info for 425 fonts, out of 8000000 for 9000
  109 hyphenation exceptions out of 8191
  99i,24n,120p,2383b,1294s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on documento.pdf (39 pages, 688016 bytes).
+Output written on documento.pdf (39 pages, 689113 bytes).
 PDF statistics:
- 693 PDF objects out of 1000 (max. 8388607)
- 581 compressed objects within 6 object streams
- 178 named destinations out of 1000 (max. 500000)
+ 701 PDF objects out of 1000 (max. 8388607)
+ 589 compressed objects within 6 object streams
+ 179 named destinations out of 1000 (max. 500000)
  87910 words of extra memory for PDF output out of 89155 (max. 10000000)
 
