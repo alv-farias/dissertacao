@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2026.11.19)  19 NOV 2026 15:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2026.11.19)  19 NOV 2026 17:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1688,6 +1688,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 ] [27]) (/home/alvaro/Documentos/github/dissertacao/2-textuais/5-resultados-complexidade.tex [28] [29
 
 ] [30] [31] [32] [33] [34] (/home/alvaro/Documentos/github/dissertacao/figuras/gadgethullCl.tex) (/home/alvaro/Documentos/github/dissertacao/figuras/gadgethullVar.tex
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 129.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 129.
 )) (/home/alvaro/Documentos/github/dissertacao/2-textuais/6-conclusao.tex [35]) (/home/alvaro/Documentos/github/dissertacao/documento.bbl [36
@@ -1717,18 +1719,18 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 286.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 286.
  ) 
 Here is how much of TeX's memory you used:
- 55735 strings out of 481239
- 1197072 string characters out of 5920376
- 1911480 words of memory out of 5000000
- 69506 multiletter control sequences out of 15000+600000
- 624918 words of font info for 344 fonts, out of 8000000 for 9000
+ 55745 strings out of 481239
+ 1197355 string characters out of 5920376
+ 1912718 words of memory out of 5000000
+ 69521 multiletter control sequences out of 15000+600000
+ 629187 words of font info for 350 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,24n,105p,1495b,1268s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/alvaro/Documentos/github/dissertacao/documento.pdf (39 pages, 678072 bytes).
+Output written on /home/alvaro/Documentos/github/dissertacao/documento.pdf (39 pages, 678711 bytes).
 PDF statistics:
  688 PDF objects out of 1000 (max. 8388607)
  589 compressed objects within 6 object streams
  179 named destinations out of 1000 (max. 500000)
- 49510 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 47462 words of extra memory for PDF output out of 51595 (max. 10000000)
 
