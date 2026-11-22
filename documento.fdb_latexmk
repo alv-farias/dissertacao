@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex documento"] 1795307247 "documento.aux" "documento.bbl" "documento" 1795307287
+["bibtex documento"] 1795315643 "documento.aux" "documento.bbl" "documento" 1795315645
   "/usr/share/texlive/texmf-dist/bibtex/bib/abntex2/abntex2-options.bib" 1357081713 5396 4eb260dac60f150ae608d45252853090 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/abntex2/abntex2-alf.bst" 1543183680 60064 0819ac8568f9a482510a46e3a8a6f605 ""
   "3-pos-textuais/referencias.bib" 1795207398 7786 621038ce4eaba00c468f07abc0815aee ""
-  "documento.aux" 1795307287 26387 bd550ac94ff88e4e3da1c19437275d96 "pdflatex"
+  "documento.aux" 1795315645 26387 bd550ac94ff88e4e3da1c19437275d96 "pdflatex"
   (generated)
   "documento.bbl"
   "documento.blg"
-["makeindex documento.idx"] 1795307244 "documento.idx" "documento.ind" "documento" 1795307287
-  "documento.idx" 1795307285 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex documento.idx"] 1795315640 "documento.idx" "documento.ind" "documento" 1795315645
+  "documento.idx" 1795315643 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "documento.ilg"
   "documento.ind"
-["pdflatex"] 1795307285 "/home/alvaro/Documentos/github/dissertacao/documento.tex" "documento.pdf" "documento" 1795307287
+["pdflatex"] 1795315643 "/home/alvaro/Documentos/github/dissertacao/documento.tex" "documento.pdf" "documento" 1795315645
   "/etc/texmf/web2c/texmf.cnf" 1769647172 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/alvaro/Documentos/github/dissertacao/documento.tex" 1795041813 11623 20295294ad969de0a22f5c32c41fd09b ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -375,16 +375,16 @@
   "2-textuais/1-introducao.tex" 1794249958 16119 bb62b6c2aa2b96b1f18cc5edb4c54fe6 ""
   "2-textuais/2-conceitos-basicos.tex" 1795041813 10016 65fc7a7ed90ec7a414dc1a7d532f92a1 ""
   "2-textuais/3-espectro.tex" 1795041813 16368 bb52d001fed3def094fb158f06dcfa90 ""
-  "2-textuais/4-alg-poly.tex" 1795307285 14692 ea24378714bb4f1ab742aec142471aac ""
+  "2-textuais/4-alg-poly.tex" 1795315637 15612 fdffc8ef686a0979d4f6383d65570947 ""
   "2-textuais/5-resultados-complexidade.tex" 1795199059 27054 0d5be26a0c8ee51f341178d3f555647b ""
   "2-textuais/6-conclusao.tex" 1795041813 1350 51d2caf6c1ec419302e597aaca37f10a ""
   "3-pos-textuais/glossario.tex" 1794069946 1325 bece85bf2ed1bad79d64e9c045f5b991 ""
-  "documento.aux" 1795307287 26387 bd550ac94ff88e4e3da1c19437275d96 "pdflatex"
-  "documento.bbl" 1795307247 6416 186da28feaadbd31a3f6c9f0e3959115 "bibtex documento"
-  "documento.ind" 1795307244 0 d41d8cd98f00b204e9800998ecf8427e "makeindex documento.idx"
-  "documento.lof" 1795307287 1380 13ee650b141494093433e8be311ab61a "pdflatex"
+  "documento.aux" 1795315645 26387 bd550ac94ff88e4e3da1c19437275d96 "pdflatex"
+  "documento.bbl" 1795315643 6416 186da28feaadbd31a3f6c9f0e3959115 "bibtex documento"
+  "documento.ind" 1795315640 0 d41d8cd98f00b204e9800998ecf8427e "makeindex documento.idx"
+  "documento.lof" 1795315645 1380 13ee650b141494093433e8be311ab61a "pdflatex"
   "documento.tex" 1795041813 11623 20295294ad969de0a22f5c32c41fd09b ""
-  "documento.toc" 1795307287 2711 497aac675598d852c6104d061971c288 "pdflatex"
+  "documento.toc" 1795315645 2711 497aac675598d852c6104d061971c288 "pdflatex"
   "figuras/gadgethullCl.tex" 1795041813 1471 93dbd361a13d59ff2faf094e33d45bb6 ""
   "figuras/gadgethullVar.tex" 1795199059 6663 01d6f5406b487799c3ffcd2545390ecf ""
   "lib/logo-ufc.PNG" 1794069946 225873 bd8744586e262fc284cb39e1fe099b01 ""

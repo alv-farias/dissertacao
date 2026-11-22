@@ -95,7 +95,7 @@ Já no algoritmo~2, definimos os parâmetros $inf(v)$, $temE(v)$ e $temS(v)$, qu
       $inf(v_i) \leftarrow true$      
     }
     \Se{$v_i \notin S$ \emph{e} $inf(v_i) = false$}{
-      \Se{$\pi = NULO$ \emph{ou} $temE(v_i) = false$ \emph{e} $temS(v_i) = false$}{
+      \Se{$\pi = NULO$ \emph{ou} $(temE(v_i) = false$ \emph{e} $temS(v_i) = false)$}{
         $S \leftarrow S \cup \{v_i\}$\\
         $inf(v_i) \leftarrow true$
       }
@@ -131,7 +131,14 @@ Já no algoritmo~2, definimos os parâmetros $inf(v)$, $temE(v)$ e $temS(v)$, qu
   Agora suponha que $i^*_i = 1$ e $s_i = 0$, ou seja, $v_i$ foi escolhido por $I^*$, mas não foi escolhido pela pelo algoritmo. Com isso temos os seguintes casos:
 
   \begin{enumerate}
-    \item O algoritmo não selecionou $v_i$ pois, na linha \textbf{14}, temos que $inf(v_i) = true$. Neste caso, temos que $v_i \in I^*$, mas perceba que como $v_i$ é gerado por seus filhos, $I^*\backslash \{v_i\}$ é um conjunto de envoltória menor que $I^*$. Contradição.\alv{acho que outro caso não precisa}
+    \item O algoritmo não selecionou $v_i$ pois, na linha \textbf{14}, temos que $inf(v_i) = true$. Neste caso, temos que $v_i \in I^*$, mas perceba que como $v_i$ é gerado por seus filhos, $I^*\backslash \{v_i\}$ é um conjunto de envoltória menor que $I^*$. Contradição.
+    \item O algoritmo não entrou nas condições \textbf{17}, \textbf{21} e \textbf{25}. Neste caso, se $\pi \neq NULO$, como $inf(v_i) = false$, temos pelo menos um filho $u$ de $v_i$ de entrada ou de saída tal que $inf(u) = true$. Suponha que $temE(v_i) = true$ e $temS(v_i) = false$. Como $v_i$ não entrou na condicional \textbf{21}, temos que $\pi \in N^+(v_i)$. Temos os seguintes casos:
+    \begin{enumerate}
+      \item Se $\pi \in I^*$, então teríamos que $I^*\backslash \{v_i\}$ seria um conjunto de intervalo menor, contradizendo a otimalidade de $I^*$.
+      \item Agora, se $\pi \notin I^*$, perceba que $I'^* = I^*\backslash \{v_i\} \cup \{\pi\}$, continua sendo um conjunto de envoltória e que $|I'^*| = |I^*|$, portanto, mínimo e que como $v_i \notin I'^*$, concorda em mais um posição com o algoritmo, contradizendo a escolha de $I^*$.
+    \end{enumerate}
+
+    \item Para a condição \textbf{25}, é análogo a análise anterior.
   \end{enumerate}
 \end{proof}
 
