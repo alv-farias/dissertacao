@@ -1,5 +1,5 @@
 \changetocdepth {4}
-\babel@toc {brazil}{}
+\babel@toc {brazil}{}\relax 
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
@@ -19,11 +19,11 @@
 \contentsline {section}{\numberline {3.1}Continuidade do espectro}{21}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Limitantes do espectro do número de intervalo em árvores, caminhos e ciclos}{24}{section.3.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Algoritmo polinomial para conjunto de intervalo na convexidade P3 orientada}}{26}{chapter.4}%
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Algoritmo polinomial para conjunto de intervalo e conjunto de envoltória na convexidade P3 orientada}}{26}{chapter.4}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Resultados de Complexidade em Grafos planares}}{29}{chapter.5}%
-\contentsline {section}{\numberline {5.1}NP-completude para grafos planares orientados}{29}{section.5.1}%
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Resultados de Complexidade em Grafos planares}}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}NP-completude para grafos planares orientados}{31}{section.5.1}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase {Conclusão}}{36}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase {Conclusão}}{38}{chapter.6}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase {REFER\^ENCIAS}}{37}{section*.22}%
+\contentsline {chapter}{\MakeTextUppercase {REFER\^ENCIAS}}{39}{section*.23}%

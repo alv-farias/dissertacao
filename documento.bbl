@@ -59,6 +59,12 @@ Dispon{\'\i}vel em:
 \abntrefinfo{Cormen}{CORMEN}{2012}
 {CORMEN, T. \textbf{Algoritmos - Teoria e Pr{\'a}tica}. [S.l.]: GEN LTC, 2012.}
 
+\bibitem[Courcelle e Engelfriet 2012]{courcelle2012graph}
+\abntrefinfo{Courcelle e Engelfriet}{COURCELLE; ENGELFRIET}{2012}
+{COURCELLE, B.; ENGELFRIET, J. \textbf{Graph Structure and Monadic Second-Order
+  Logic: A Language-Theoretic Approach}. Cambridge: Cambridge University Press,
+  2012.  (Encyclopedia of Mathematics and its Applications).}
+
 \bibitem[Erdös \textit{et al.} 1972]{ERDOS1972}
 \abntrefinfo{Erdös \textit{et al.}}{ERDöS \textit{et al.}}{1972}
 {ERDöS, P.; FRIED, E.; HAJNAL, A.; MILNER, E. Some remarks on simple
