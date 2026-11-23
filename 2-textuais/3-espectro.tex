@@ -20,7 +20,7 @@ A resposta para este problema é não e é apresentada no mesmo artigo, a justif
 	Se T é uma árvore com l folhas, $S_g(T)$ é contínuo com limite inferior igual a $l$ e limite superior igual a $n$.
 \end{theorem}
 
-Isso nos leva a questionar se o problema do \emph{espectro} poderia ser contínuo em uma outra convexidade. Em~\cite{ALVARO2026}, temos um estudo do problema do \emph{espectro} do número de intervalo na convexidade dos caminhos de tamanho 2 direcionados.
+Isso nos leva a questionar se o problema do \emph{espectro} poderia ser contínuo em uma outra convexidade. Nesta seção, temos um estudo do problema do \emph{espectro} do número de intervalo na convexidade dos caminhos de tamanho 2 orientados.
 
 O principal resultado apresentado é o lema que aborda justamente a variação do número de intervalo em no máximo 1. Já que essa variação era o problema na convexidade \emph{geodésica}, o natural era checar como essa inversão do arco impactaria em uma outra convexidade.
 
@@ -76,11 +76,11 @@ O resultado da continuidade do espectro pode ser visto como um teorema que utili
 
   Qualquer par de orientações de $G$ pode ser transformada uma na outra com uma sequência finita de inversões dos arcos. Fixamos tal sequência que inicia na orientação $D^-$ e transforma na orientação $D^+$.
 
-  Seja a sequência denotada por $O = \{D_0, D_1, \ldots, D_m\}$, onde $D_0 = D^-$ e $D_m = D^+$. Para $1 \leq n \leq m$, cada orientação $D_n$ é obtida invertendo exatamente um arco de $D_{n-1}$. Seja $S_{n} = \{\overrightarrow{in}(D) \mid \textit{D é uma orientação de G}\}$ o conjunto de todos os valores do número de intervalo após as $n$ primeiras inversões.
+  Seja a sequência denotada por $O = \{D_0, D_1, \ldots, D_m\}$, onde $D_0 = D^-$ e $D_m = D^+$. Para $1 \leq n \leq m$, cada orientação $D_n$ é obtida invertendo exatamente um arco de $D_{n-1}$. Seja $S_{n} = \{\overrightarrow{in}(D) \mid \textit{D é uma orientação de G}\}$ o conjunto de todos os valores do número de intervalo após as $n$ primeiras inversões. \alv{Não sei se a melhor forma de escrever é colocando "caso base" e afins}
 
   \noindent \textbf{Caso base:} ($n = 1$) Apenas uma inversão é feita, logo, $S_1 = \{\overrightarrow{in}(D_0), \overrightarrow{in}(D_1)\}$. Pelo lema~\ref{lem:inv}, temos que a variação entre $\overrightarrow{in}(D_0)$ e $\overrightarrow{in}(D_1)$ é no máximo 1. Como $\overrightarrow{in}(D_0)$ é o valor mínimo dentre todas as orientações do grafo $G$, esse valor não pode decrescer, logo, $\overrightarrow{in}(D_1) \in \{\overrightarrow{in}(D_0), \overrightarrow{in}(D_0)+1\}$. Em ambos os casos, $S_n$ é contínuo.
 
-   Assuma para um inteiro $n$ tal que $1\leq n < m$ que a proposição é válida para todos os passos até $n$, ou seja, $S_1, S_2, \ldots, S_n$ são todos contínuos e que iniciam em $\overrightarrow{in}(D_0)$, seja $i_{\min} =  \overrightarrow{in}(D_0)$. Neste caso, temos que $S_n = \{i_{\min}, \ldots, i_n\} $ \alv{usar apenas uma notação para indicar o mínimo do conjunto e indicar que $i_{min}$ é o menor valor de $S_n$ e também do espectro e manter o $i_n$ como máximo atual, talvez isso possa ser citado diretamente nos casos}, onde $i_n$ é o maior valor obtido até a orientação $D_n$.
+   Assuma para um inteiro $n$ tal que $1\leq n < m$ que a proposição é válida para todos os passos até $n$, ou seja, $S_1, S_2, \ldots, S_n$ são todos contínuos e que iniciam em $\overrightarrow{in}(D_0)$, seja $i_{\min} =  \overrightarrow{in}(D_0)$. Neste caso, temos que $S_n = \{i_{\min}, \ldots, i_n\} $ onde $i_n$ é o maior valor obtido até a orientação $D_n$.
 
    Precisamos mostrar que $S_{n+1} = S_n \cup \{\overrightarrow{in}(D_{n+1})\}$ é contínuo. Pelo lema~\ref{lem:inv} temos que  $\overrightarrow{in}(D_{n+1}) \in \{\overrightarrow{in}(D_{n})-1, \overrightarrow{in}(D_{n}), \overrightarrow{in}(D_{n})+1\}$. Pela hipótese indutiva, $S_n$ é contínuo e contém $\overrightarrow{in}(D_n)$, logo, analisamos os seguintes casos:
 
